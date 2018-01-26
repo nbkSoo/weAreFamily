@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        html,body{
+            height:100%;
+            background: #000;
+        }
+        #main{
+            width:100%;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+<div id="main"></div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/echarts.min.js"></script>
+<script>
+    $(function () {
+        var cdate=[],OriginalCount=[],ReprintCount=[],originalrate=[];
+        $.ajax({
+            type:"get",
+            url:"json/fgl.json",
+            dataType:"json",
+            async:false,
+            success:function (data) {
+                if(data.result){
+                    $.each(data.data,function (index, item) {
+                        cdate.push(item.cdate.substr(5));
+                        OriginalCount.push(item.OriginalCount);
+                        ReprintCount.push(item.ReprintCount);
+                        originalrate.push(item.originalrate.substr(0,item.originalrate.length-1));
+                    })
+                }
+            }
+        });
+        var myChart = echarts.init(document.getElementById("main"));
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '分析图表',
+                textStyle:{
+                    color:"white",
+                    fontSize:20
+                },
+                subtext:"2018年1月"
+            },
+            tooltip: {
+                trigger:'axis',
+                axisPointer:{
+                    type:"shadow"
+                }
+            },
+            // '转载量',"原创量","原创率(%)"
+            legend: {
+                data:[{
+                    name:"转载量",
+                    icon:"image://images/emoji-1.svg"
+                },{
+                    name:"原创量",
+                    icon:"image://images/emoji-11.svg"
+                },{
+                    name:"原创率(%)",
+                    icon:"image://images/emoji-15.svg",
+                }],
+                textStyle:{
+                    color:"#999",
+                    fontWeight:"bold"
+                },
+                itemHeight:35,
+                itemWidth:35
+            },
+            xAxis: {
+                data: cdate,
+                axisLabel:{
+                    color:"white",
+                    rotate:45,
+                },
+            },
+            yAxis:[
+                {
+                    type:"value",
+                    axisLine:{
+                        show:false
+                    },
+                    splitLine:{
+                        lineStyle:{
+                            color:"#44302f"
+                        }
+                    },
+                    axisLabel:{
+                        show:true,
+                        color:"white"
+                    }
+                },
+                {
+                    type:"value",
+                    name:"孟军利",
+                    axisLine:{
+                        show:false
+                    },
+                    axisLabel:{
+                        show:true,
+                        formatter:'-{value}°C',
+                        color:"white"
+                    },
+                    splitLine:{
+                        show:false
+                    },
+                },
+            ],
+            series: [{
+                name: '转载量',
+                type: 'line',
+                legendHoverLink:true,
+                itemStyle:{
+                    color:"#ba9569",
+                    barBorderRadius:50,
+                },
+                stack:"s",
+                barMaxWidth:20,
+                animation:true,
+                data: ReprintCount,
+                showSymbol:false,
+                smooth:true
+            },{
+                name: '原创量',
+                type: 'line',
+                legendHoverLink:true,
+                itemStyle:{
+                    color:"#ee5d4a",
+                    barBorderRadius:50,
+                },
+                stack:"s",
+                barMaxWidth:20,
+                animation:true,
+                data: OriginalCount,
+                showSymbol:false,
+                smooth:true
+            },{
+                name: '原创率(%)',
+                type: 'line',
+                legendHoverLink:true,
+                itemStyle:{
+                    color:"#7bb1e2",
+                    barBorderRadius:50,
+                },
+                yAxisIndex:1,
+                animation:true,
+                data:originalrate,
+                showSymbol:false,
+                smooth:true
+            }],
+            dataZoom:[{
+                throttle:100,
+                filterMode:"filter",
+            },{
+                type:"inside"
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    })
+</script>
+</body>
+</html>
