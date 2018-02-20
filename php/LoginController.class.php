@@ -7,9 +7,8 @@ class LoginController{
         if(IS_AJAX){
             $data=$_POST;
             $username = $data["username"];
-            $email=$data["email"];
             $password=$data["password"];
-            $oldData=M()->query_sql("SELECT * FROM users WHERE email='{$email}'");
+            $oldData=M()->query_sql("SELECT * FROM users WHERE username='{$username}'");
             if(!empty($oldData)){
                 ajax_return("505","用户名已存在","");
             }else{
@@ -31,9 +30,9 @@ class LoginController{
     public function login(){
         if(IS_AJAX){
             $data=$_POST;
-            $email=$data["email"];
+            $username=$data["username"];
             $password=$data["password"];
-            $oldData=M()->query_sql("SELECT * FROM users WHERE email='{$email}'");
+            $oldData=M()->query_sql("SELECT * FROM users WHERE username='{$username}'");
             $oldData=current($oldData);
             $username = $oldData["username"];
             if(empty($oldData)){

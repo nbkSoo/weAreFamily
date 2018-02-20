@@ -1,6 +1,6 @@
 <?php
 class ModelController{
-    private $dsn="mysql:host=localhost;dbname=myindex";
+    private $dsn="mysql:host=localhost;dbname=love";
     private $username="root";
     private $password="root";
     public static $pdo;
