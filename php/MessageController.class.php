@@ -21,8 +21,6 @@ class MessageController{
     public function returnMessage(){
         if(IS_AJAX){
             $result=M()->query_sql("SELECT * FROM message");
-//            print_r($result);
-//            die;
             foreach ($result as $k=>$v){
                 $result[$k]["date"]=date("Y-m-d H:i:s",$v["date"]);
             }
@@ -54,8 +52,6 @@ class MessageController{
         if(IS_AJAX){
             $data=$_POST["mid"];
             $result=M()->query_sql("SELECT * FROM message WHERE id={$data}");
-//            p($result);
-//            die;
             $result=current($result);
             if(!empty($result)){
                 ajax_return("200","成功",$result);
@@ -71,7 +67,6 @@ class MessageController{
         if(IS_AJAX){
             $data=$_POST;
             $id=array_pop($data);
-//            p($id);die;
             $result=M()->update("message",$data,$id);
             if(!$result){
                 ajax_return("403","没有任何修改","");

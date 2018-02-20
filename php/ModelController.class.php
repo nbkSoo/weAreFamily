@@ -48,16 +48,8 @@ class ModelController{
      */
     public function add($table,$data){
         try{
-//          变成适合sql插入的格式
-//            $arr=Array(
-//              "username" => "sdf",
-//              "password" => "dsf"
-//            );
-//            INSERT INTO users(username,password) VALUES('sdf',''dsf);
             $keys=implode(",",array_keys($data));
             $values="'".implode("','",$data)."'";
-//            p($values);
-//            echo $keys;
             self::$pdo->query("SET NAMES UTF8");
             self::$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
             $result=self::$pdo->exec("INSERT INTO {$table}({$keys}) VALUES({$values})");
