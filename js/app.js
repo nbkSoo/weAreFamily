@@ -6,7 +6,7 @@
                         width =414;
                 }
                 // 将屏幕宽度分成7.5份， 1份为1rem,1rem=100px
-                var rem =width/7.5;
+                var rem =width/6.4;
                 if (rem > 100) {
                     rem = 100
                 }
