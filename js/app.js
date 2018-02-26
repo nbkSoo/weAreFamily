@@ -2,11 +2,11 @@
         var docEl = win.document.documentElement;
         function refreshRem() {
                 var width = docEl.getBoundingClientRect().width;
-                if (width > 768) { // 最大宽度
-                        width = 768;
+                if (width > 414) { // 最大宽度
+                        width =414;
                 }
                 // 将屏幕宽度分成7.5份， 1份为1rem,1rem=100px
-                var rem =width/6.4;
+                var rem =width/7.5;
                 if (rem > 100) {
                     rem = 100
                 }
