@@ -31,7 +31,7 @@
 .swiper-pagination-bullet{
     width: 0.15rem;
     height: 0.15rem;
- }
+}
 .swiper-pagination-bullet-active{
     background: rgb(255,130,136);
 }
@@ -46,7 +46,7 @@
     width: 4.84rem;
     height: 0.35rem;
     top: 1.48rem;
-    left: 1.5rem;
+    left: 0.9rem;
 }
 .yin{
     display: none;
@@ -59,8 +59,8 @@
 .one-content{
     width: 3.95rem;
     height: 3.4rem;
-    top: 3rem;
-    left:1.9rem;
+    top: 2.5rem;
+    left:1.3rem;
     opacity: 0;
     /*animation: ones 2s;*/
 }
@@ -71,7 +71,7 @@
     width: 5.44rem;
     height: 1.01rem;
     bottom: 3.2rem;
-    left: 1rem;
+    left: 0.5rem;
 
 }
 @keyframes ones {
@@ -82,8 +82,8 @@
 .one-content1{
     width: 4.68rem;
     height: 3.96rem;
-    top: 3.5rem;
-    left: 1.5rem;
+    top: 2.5rem;
+    left: 0.9rem;
     opacity: 0;
     /*animation: one-con 3s 1.5s both;*/
 }
@@ -99,30 +99,30 @@
     background-size: 100% 100%;
 }
 .two-top{
-    width: 5.8rem;
-    height: 0.45rem;
-    top: 1.5rem;
-    left:0.94rem;
+    width: 5.88rem;
+    height: 0.44rem;
+    top: 1.2rem;
+    left:0.35rem;
 }
 .two-content{
     width: 6.1rem;
     height: 5.31rem;
-    top: 3.13rem;
-    left: 0.76rem;
+    top: 2rem;
+    left: 0.2rem;
 }
 .two-contents{
     animation: two-contents 3s both;
 }
 @keyframes two-contents {
     0%{ top: 2rem;}
-    50%{top: 4rem;}
-    100%{ top: 3.13rem;}
+    50%{top: 3rem;}
+    100%{ top: 2rem;}
 }
 .two-xin{
     width: 0.71rem;
     height: 0.9rem;
-    top: 3.2rem;
-    left: 2.2rem;
+    top: 2rem;
+    left: 2rem;
     opacity: 0;
 }
 .two-xins{
@@ -136,16 +136,16 @@
         opacity: 0;
     }
     100%{
-        top: 3.2rem;
-        left: 2.2rem;
+        top: 2rem;
+        left: 2rem;
         opacity: 1;
     }
 }
 .two-bottom{
-    width: 6.47rem;
+    width: 6rem;
     height: 1.23rem;
-    bottom: 3rem;
-    left: 0.76rem;
+    bottom: 2.5rem;
+    left: 0.2rem;
     opacity: 0;
 }
 .two-btom{
@@ -162,13 +162,13 @@
     background-size: 100% 100%;
 }
 .three-top{
-     width: 4.46rem;
-     height: 0.32rem;
-     top: 1.46rem;
-     left: 1.6rem;
+    width: 4.46rem;
+    height: 0.32rem;
+    top: 1.46rem;
+    left: 1rem;
     transform: scale(1);
 
- }
+}
 .three-one{
     animation: three-one 1s;
 }
@@ -179,8 +179,8 @@
 .three-content{
     width: 5.07rem;
     height: 4.99rem;
-    top: 2.7rem;
-    left: 1.2rem;
+    top: 2.2rem;
+    left: 0.7rem;
 }
 .three-ones{
     animation: three-ones 2s;
@@ -193,13 +193,13 @@
 .three-bottom{
     width: 4.9rem;
     height: 0.66rem;
-    top: 8.5rem;
-    left: 1.4rem;
+    top: 7.5rem;
+    left: 1rem;
 }
 .go{
     position: absolute;
-    top: 10rem;
-    left: 2.3rem;
+    top: 9rem;
+    left: 2rem;
 }
 .go a{
     padding: 10px 40px;
