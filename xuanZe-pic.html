@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/inis.css">
+    <link rel="stylesheet" href="css/xuanZa-pic.css">
+</head>
+<body>
+<div class="box">
+    <header>
+        <div class="head">
+            <i class="left"></i>
+            <p>选择照片</p>
+            <span>完成</span>
+        </div>
+    </header>
+    <section>
+        <div class="content">
+            <div class="pic">
+                <ul>
+                    <li>
+                        <img src="images/li-01.png" alt=""><i></i>
+                    </li>
+                    <li>
+                        <img src="images/li-02.png" alt=""><i></i>
+                    </li>
+                    <li>
+                        <img src="images/Imge-01.png" alt=""><i></i>
+                    </li>
+                    <li>
+                        <img src="images/li-03.png" alt=""><i></i>
+                    </li>
+                    <li>
+                        <img src="images/li-03.png" alt=""><i></i>
+                    </li>
+                    <li>
+                        <img src="images/li-03.png" alt=""><i></i>
+                    </li>
+                    <li>
+                        <img src="images/li-03.png" alt=""><i></i>
+                    </li>
+                    <li>
+                        <img src="images/li-03.png" alt=""><i></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+    $(function(){
+        var arr=[];
+        $(".pic ul li").on("click",function(){
+            if($(this).children("i").hasClass("dui")){
+                $(this).children("i").removeClass("dui").attr("sc","");
+            }else{
+                $(this).children("i").addClass("dui").attr("sc",$(this).children("img").attr("src"));
+            }
+        });
+        $(".head span").on("click",function(){
+            arr.push($("i.dui").attr("sc"));
+            console.log(arr);
+//            arr.push(".pic");
+//            console.log($(".pic").find(".dui").attr("sc"));
+        });
+        $(".left").on("click",function(){
+            window.history.back();
+        });
+    });
+</script>
+</html>

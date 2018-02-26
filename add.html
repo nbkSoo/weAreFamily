@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/inis.css">
+    <link rel="stylesheet" href="css/add.css">
+</head>
+<body>
+<div class="box">
+    <header>
+        <div class="head">
+            <i class="left"></i>
+            <span>发送</span>
+        </div>
+    </header>
+    <section>
+        <div class="content">
+            <div class="cont">
+                <textarea class="teart" placeholder="写下你此刻的想法..."></textarea>
+            </div>
+            <div class="Imge">
+                <img src="images/Imge-01.png" alt="">
+                <img src="images/Imge-02.png" alt="">
+                <img src="images/Imge-01.png" alt="">
+                <img src="images/Imge-02.png" alt="">
+            </div>
+            <a href="xuanZe-pic.html">
+                <div class="add">
+                    <img src="images/add-1.png" alt="">
+                </div>
+            </a>
+        </div>
+    </section>
+</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+    $(function(){
+        $(".Imge img").on("click",function(){
+            $(".cont").append('<img src="'+$(this).attr("src")+'">');
+        });
+    });
+</script>
+</html>
