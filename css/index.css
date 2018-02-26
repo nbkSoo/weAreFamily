@@ -1,0 +1,210 @@
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    position: relative;
+}
+.one{
+    background: url("../images/one-bei.jpg") no-repeat;
+    background-size: 100% 100%;
+}
+.swiper-pagination-bullet{
+    width: 0.15rem;
+    height: 0.15rem;
+ }
+.swiper-pagination-bullet-active{
+    background: rgb(255,130,136);
+}
+.swiper-container-horizontal>.swiper-pagination-bullets{
+    bottom: 1rem;
+}
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{
+    width: 0.2rem;
+    height: 0.2rem;
+}
+.one-top{
+    width: 4.84rem;
+    height: 0.35rem;
+    top: 1.48rem;
+    left: 1.5rem;
+}
+.yin{
+    display: none;
+}
+.oneImg{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.one-content{
+    width: 3.95rem;
+    height: 3.4rem;
+    top: 3rem;
+    left:1.9rem;
+    opacity: 0;
+    /*animation: ones 2s;*/
+}
+.ones{
+    animation: ones 2s;
+}
+.one-bottom{
+    width: 5.44rem;
+    height: 1.01rem;
+    bottom: 3.2rem;
+    left: 1rem;
+
+}
+@keyframes ones {
+    0%{opacity: 0;transform: scale(0.5);}
+    50%{opacity:1;transform: scale(1);}
+    100%{opacity: 0;transform: scale(0.5);}
+}
+.one-content1{
+    width: 4.68rem;
+    height: 3.96rem;
+    top: 3.5rem;
+    left: 1.5rem;
+    opacity: 0;
+    /*animation: one-con 3s 1.5s both;*/
+}
+.one-con{
+    animation: one-con 3s 1.5s both;
+}
+@keyframes one-con {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+.two{
+    background: url("../images/two-bei.jpg") no-repeat;
+    background-size: 100% 100%;
+}
+.two-top{
+    width: 5.8rem;
+    height: 0.45rem;
+    top: 1.5rem;
+    left:0.94rem;
+}
+.two-content{
+    width: 6.1rem;
+    height: 5.31rem;
+    top: 3.13rem;
+    left: 0.76rem;
+}
+.two-contents{
+    animation: two-contents 3s both;
+}
+@keyframes two-contents {
+    0%{ top: 2rem;}
+    50%{top: 4rem;}
+    100%{ top: 3.13rem;}
+}
+.two-xin{
+    width: 0.71rem;
+    height: 0.9rem;
+    top: 3.2rem;
+    left: 2.2rem;
+    opacity: 0;
+}
+.two-xins{
+    animation: two-xin 3s 2s both;
+}
+
+@keyframes two-xin {
+    0%{
+        top: 4.2rem;
+        left: 3.5rem;
+        opacity: 0;
+    }
+    100%{
+        top: 3.2rem;
+        left: 2.2rem;
+        opacity: 1;
+    }
+}
+.two-bottom{
+    width: 6.47rem;
+    height: 1.23rem;
+    bottom: 3rem;
+    left: 0.76rem;
+    opacity: 0;
+}
+.two-btom{
+    animation: two-btom 2s 2s both;
+}
+@keyframes two-btom {
+    0%{ opacity: 0;}
+    100%{ opacity: 1;}
+}
+
+
+.three{
+    background: url("../images/three-bei.jpg") no-repeat;
+    background-size: 100% 100%;
+}
+.three-top{
+     width: 4.46rem;
+     height: 0.32rem;
+     top: 1.46rem;
+     left: 1.6rem;
+    transform: scale(1);
+
+ }
+.three-one{
+    animation: three-one 1s;
+}
+@keyframes three-one {
+    0%{transform: scale(1);}
+    100%{transform: scale(1.5);}
+}
+.three-content{
+    width: 5.07rem;
+    height: 4.99rem;
+    top: 2.7rem;
+    left: 1.2rem;
+}
+.three-ones{
+    animation: three-ones 2s;
+}
+@keyframes three-ones {
+    0%{transform: scale(0) rotate(0deg);}
+    100%{transform: scale(1) rotate(360deg);}
+}
+
+.three-bottom{
+    width: 4.9rem;
+    height: 0.66rem;
+    top: 8.5rem;
+    left: 1.4rem;
+}
+.go{
+    position: absolute;
+    top: 10rem;
+    left: 2.3rem;
+}
+.go a{
+    padding: 10px 40px;
+    text-decoration: none;
+    color: #f9f9ff;
+    border-radius: 5%;
+    background: pink;
+}
