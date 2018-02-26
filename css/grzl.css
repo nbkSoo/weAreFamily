@@ -12,12 +12,14 @@
     height: 2.5rem;
 }
 img{
-    margin-left: 0.3rem;
+    margin: 0 auto;
+    display: block;
 }
 p{
     color: #CCCC;
     font-size: 0.24rem;
-    margin-left: 0.43rem;
+    /*margin-left: 0.43rem;*/
+    text-align: center;
 }
 .touxiang{
     width: 1.88rem;
