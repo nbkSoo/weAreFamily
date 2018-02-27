@@ -1,7 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin:*');
 ini_set("display_errors", "on");
-
+include_once "../../function.php";
 require_once dirname(__DIR__) . '/api_sdk/vendor/autoload.php';
 
 use Aliyun\Core\Config;
@@ -72,7 +72,6 @@ class SmsDemo
         $data = $_POST;
         $tel = $data["tel"];
         $rand = $data["rand"];
-        var_dump($data);
         // 初始化SendSmsRequest实例用于设置发送短信的参数
         $request = new SendSmsRequest();
 
