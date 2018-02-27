@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin:*');
 class LoginController{
     /*
      * 注册方法
