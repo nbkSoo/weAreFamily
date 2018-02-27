@@ -46,6 +46,10 @@ li{
     color: #fff;
     border-radius: 0.1rem;
 }
+.notClick{
+    background: #ccc;
+    pointer-events: none;
+}
 .btn{
     width: 5.5rem;
     height: 0.7rem;
