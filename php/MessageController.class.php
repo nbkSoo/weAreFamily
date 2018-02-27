@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin:*');
 class MessageController{
     /*
      * 添加留言
