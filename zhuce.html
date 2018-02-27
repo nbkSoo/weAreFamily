@@ -16,11 +16,11 @@
     <ul>
         <li>
             <div class="nicheng">昵&nbsp;&nbsp;称</div>
-            <input type="text" placeholder="请输入昵称" class="inp">
+            <input type="text" placeholder="请输入昵称" class="inp inpa">
         </li>
         <li>
             <div class="nicheng">手机号</div>
-            <input type="tel" pattern="^(13|15|18|17|16)\d{9}$" placeholder="请输入手机号" class="inp register_tel">
+            <input type="tel" pattern="^(13|15|18|17|16)\d{9}$" placeholder="请输入手机号" class="inp register_tel inpb">
         </li>
         <li>
             <div class="nicheng">验证码</div>
@@ -29,11 +29,11 @@
         </li>
         <li>
             <div class="nicheng">密&nbsp;&nbsp;码</div>
-            <input type="password" placeholder="请输入密码" class="inp">
+            <input type="password" placeholder="请输入密码" class="inp inpc">
         </li>
         <li>
             <div class="nicheng">确认密码</div>
-            <input type="password" placeholder="请确认密码" class="inp">
+            <input type="password" placeholder="请确认密码" class="inp inpd">
         </li>
         <li>
             <input type="button" value="注册" class="btn">
@@ -82,6 +82,38 @@
 
 
     })
+
+
+    var div='<div class="yincang"></div>';
+    $("li").append(div);
+    // 昵称
+    $(".inpa").on("blur",function () {
+        var reg=/^((\w)|.*[\u4e00-\u9fa5].*)((\w)|.*[\u4e00-\u9fa5].*){1,9}$/;
+        if($(".inpa").val()==""){
+            $("li:eq(0)").children(".yincang").html("内容不能为空");
+        }else if($(".inpa").val().length<3){
+            $("li:eq(0)").children(".yincang").html("请输入3~10位有效字符");
+        }
+    });
+    // 密码
+    $(".inpc").on("blur",function () {
+        if($(".inpc").val()==""){
+            $("li:eq(3)").children(".yincang").html("密码不能为空");
+        }else if($(".inpc").val().length<6){
+            $("li:eq(3)").children(".yincang").html("密码长度为6~20个字符");
+        }else{
+            var level=0;
+            if(/[a-z]/.test($(".inpc").val())){
+                level++;
+            }
+            if(/[0-9]/.test($(".inpc").val())){
+                level++;
+            }
+            if(/[^0-9 a-z]/.test($(".inpc").val())){
+                level++;
+            }
+        }
+    });
 </script>
 </body>
 </html>
