@@ -53,10 +53,10 @@ class MessageController{
             $data=$_POST["mid"];
             $result=M()->query_sql("SELECT * FROM message WHERE id={$data}");
             $result=current($result);
-            if(!empty($result)){
-                ajax_return("200","成功",$result);
+            if($result){
+                ajax_return("200","获取成功",$result);
             }else{
-                ajax_return("403","失败","");
+                ajax_return("403","获取失败","");
             }
         }
     }

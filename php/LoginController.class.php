@@ -39,7 +39,7 @@ class LoginController{
                 ajax_return("500","用户名不存在","");
             }else{
                 $newPass=$this->verify($password);
-                if($newPass!==$oldData["password"]){
+                if($newPass!=$oldData["password"]){
                     ajax_return("403","密码不正确","");
                 }else{
                     session_start();

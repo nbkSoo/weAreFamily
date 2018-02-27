@@ -9,7 +9,7 @@ define("IS_AJAX",isset($_SERVER["HTTP_X_REQUESTED_WITH"])&&$_SERVER["HTTP_X_REQU
 function __autoload($classname){
     $classPath = "./{$classname}.class.php";
     if(file_exists($classPath)){
-        include_once $classPath;
+        include_once "$classPath";
     }else{
         die("{$classname}不存在");
     }
@@ -22,7 +22,7 @@ function success($msg,$url){
     location.href = "$url";
 </script>
 str;
-die($str);
+    die($str);
 }
 function error($msg,$url){
     $str = <<<str
@@ -31,7 +31,7 @@ function error($msg,$url){
     location.href = "$url";
 </script>
 str;
-die($str);
+    die($str);
 }
 
 function M(){
