@@ -1,0 +1,86 @@
+.box_content{
+    width: 6.4rem;
+    height: 10.36rem;
+    overflow: hidden;
+    position: relative;
+}
+/*弹出框*/
+.box_left{
+    position: absolute;
+    top:0;
+    left: -4.4rem;
+    width: 4.4rem;
+    height: 100%;
+    background: url("../images/bg.png");
+    background-size: 4.4rem 100%;
+    z-index: 10;
+}
+.tp{
+    width: 4.16rem;
+    height: 2.1rem;
+    line-height: 2.08rem;
+    padding: 0.12rem;
+    margin: 0 auto;
+    border-bottom: 0.02rem solid #aeaaa7;
+}
+.tp span{
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: url("../images/l_03.png");
+    background-size: 1rem;
+    margin: 0.54rem 0.3rem;
+    float: left;
+}
+.tp p{
+    font-size: 0.33rem;
+    float: left;
+    font-weight: bold;
+    color: black;
+}
+.cb{
+    width: 4.4rem;
+    height: 1.07rem;
+    line-height: 1.07rem;
+    padding: 0.2rem 0;
+}
+.cb i{
+    display: block;
+    width: 0.67rem;
+    height: 0.67rem;
+    border-radius: 50%;
+    float: left;
+    margin: 0.2rem 0.23rem 0.2rem 0.5rem;
+    background-size: 0.67rem 0.67rem;
+}
+.i1{
+    background: url("../images/l_07.png");
+}
+.i2{
+    background: url("../images/l_10.png");
+}
+.i3{
+    background: url("../images/l_12.png");
+}
+.i4{
+    background: url("../images/l_14.png");
+}
+.i5{
+    background: url("../images/l_16.png");
+}
+.cb p{
+    font-size: 0.3rem;
+    float: left;
+    color: #616361;
+}
+.cb p:hover{
+    color: #fc9093;
+}
+.box_right{
+    height:100%;
+    width: 6.4rem;
+    position: absolute;
+    top:0;
+    left: 0;
+}
