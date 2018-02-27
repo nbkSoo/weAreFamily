@@ -1,5 +1,5 @@
 <?php
-
+header('Access-Control-Allow-Origin:*');
 ini_set("display_errors", "on");
 
 require_once dirname(__DIR__) . '/api_sdk/vendor/autoload.php';
@@ -11,9 +11,9 @@ use Aliyun\Api\Sms\Request\V20170525\SendSmsRequest;
 use Aliyun\Api\Sms\Request\V20170525\SendBatchSmsRequest;
 use Aliyun\Api\Sms\Request\V20170525\QuerySendDetailsRequest;
 
+
 // 加载区域结点配置
 Config::load();
-
 /**
  * Class SmsDemo
  *
@@ -26,7 +26,6 @@ class SmsDemo
 {
 
     static $acsClient = null;
-
     /**
      * 取得AcsClient
      *
@@ -71,12 +70,14 @@ class SmsDemo
      */
     public static function sendSms() {
         $data = $_POST;
-
+        $tel = $data["tel"];
+        $rand = $data["rand"];
+        var_dump($data);
         // 初始化SendSmsRequest实例用于设置发送短信的参数
         $request = new SendSmsRequest();
 
         // 必填，设置短信接收号码
-        $request->setPhoneNumbers("13611243845");
+        $request->setPhoneNumbers($tel);
 
         // 必填，设置签名名称，应严格按"签名名称"填写，请参考: https://dysms.console.aliyun.com/dysms.htm#/develop/sign
         $request->setSignName("暗恋");
@@ -86,7 +87,7 @@ class SmsDemo
 
         // 可选，设置模板参数, 假如模板中存在变量需要替换则为必填项
         $request->setTemplateParam(json_encode(array(  // 短信模板中字段的值
-            "code"=>"12345",
+            "code"=>$rand,
             "product"=>"dsd"
         ), JSON_UNESCAPED_UNICODE));
 
@@ -187,7 +188,7 @@ $response = SmsDemo::sendSms();
 echo "发送短信(sendSms)接口返回的结果:\n";
 print_r($response);
 
-sleep(2);
+//sleep(2);
 
 //$response = SmsDemo::sendBatchSms();
 //echo "批量发送短信(sendBatchSms)接口返回的结果:\n";

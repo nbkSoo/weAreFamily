@@ -21,7 +21,7 @@
         </li>
         <li>
             <div class="nicheng">手机号</div>
-            <input type="tel" placeholder="请输入手机号" class="inp">
+            <input type="tel" pattern="^(13|15|18|17|16)\d{9}$" placeholder="请输入手机号" class="inp register_tel">
             <!--<div class="yincang">ewfw</div>-->
         </li>
         <li>
@@ -44,5 +44,29 @@
         </li>
     </ul>
 </section>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+    var $tel = $(".register_tel");
+    $(".inp2").on("click",function(){
+        if($tel.val()==""){
+            alert("手机号不能为空！");
+            return;
+        }else if($tel[0].validity.patternMismatch){
+            alert("手机号码格式错误");
+        }else{
+            var rand = Math.floor(Math.random()*8999+1000);
+            $.ajax({
+                type:"post",
+                url:"http://172.16.45.87/PhpstormProjects/weAreFamily11/php/aliyun/api_demo/SmsDemo.php",
+                data:"tel="+$tel.val()+"&rand="+rand,
+                dataType:"json",
+                success:function (data) {
+                    console.log(data);
+                }
+            })
+        }
+
+    })
+</script>
 </body>
 </html>
