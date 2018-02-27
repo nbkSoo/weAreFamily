@@ -63,22 +63,23 @@
                     s = 60;
                 }
             }
+            var rand = Math.floor(Math.random()*899999+100000);
+            $.ajax({
+                type:"post",
+                url:"http://172.16.45.87/PhpstormProjects/weAreFamily11/php/aliyun/api_demo/SmsDemo.php",
+                data:"tel="+$tel.val()+"&rand="+rand,
+                dataType:"json",
+                success:function (data) {
+                    console.log(data);
+                }
+            })
         }
 
 
 
 
 
-            // var rand = Math.floor(Math.random()*899999+100000);
-            // $.ajax({
-            //     type:"post",
-            //     url:"http://172.16.45.87/PhpstormProjects/weAreFamily11/php/aliyun/api_demo/SmsDemo.php",
-            //     data:"tel="+$tel.val()+"&rand="+rand,
-            //     dataType:"json",
-            //     success:function (data) {
-            //         console.log(data);
-            //     }
-            // })
+
 
     })
 </script>
