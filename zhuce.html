@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1,user-scalable=no"/>
+    <link rel="stylesheet" href="css/chongzhi.css">
+    <link rel="stylesheet" href="css/zhuce.css">
+    <script src="js/app.js"></script>
+</head>
+<body>
+<main>
+    <div class="header">注册</div>
+</main>
+<section>
+    <form class="register_form" action="">
+        <ul>
+            <li>
+                <div class="nicheng">昵&nbsp;&nbsp;&nbsp;&nbsp;称</div>
+                <input type="text" name="username" placeholder="请输入昵称" class="inp inpa">
+            </li>
+            <li>
+                <div class="nicheng">手机号</div>
+                <input type="tel" name="tel" pattern="^(13|15|18|17|16)\d{9}$" placeholder="请输入手机号" class="inp register_tel inpb">
+            </li>
+            <li>
+                <div class="nicheng">验证码</div>
+                <input type="text" placeholder="请输入验证码" class="inp1 inp">
+                <input type="button" value="获取验证码" class="inp2">
+            </li>
+            <li>
+                <div class="nicheng">密&nbsp;&nbsp;&nbsp;&nbsp;码</div>
+                <input type="password" name="password" pattern="^\w{6,15}" placeholder="请输入密码" class="inp ps inpc">
+            </li>
+            <li>
+                <div class="nicheng">确认密码</div>
+                <input type="password" placeholder="请确认密码" class="inp ps inpd">
+            </li>
+            <li>
+                <input type="button" value="注册" class="btn">
+            </li>
+        </ul>
+    </form>
+
+</section>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+    var $tel = $(".register_tel");
+    var s = 60;
+    var timer = null;
+    $(".inp2").on("click",function(){
+        if($tel.val()==""){
+            alert("手机号不能为空！");
+            return;
+        }else if($tel[0].validity.patternMismatch){
+            alert("手机号码格式错误");
+        }else{
+            timer = setInterval(downTime,1000);
+            $(this).addClass("notClick");
+            function downTime() {
+                s--;
+                $(".inp2").val(s+"秒后重新获取");
+                if(s<=0){
+                    clearInterval(timer);
+                    $(".inp2").val("获取验证码").removeClass("notClick");
+                    s = 60;
+                }
+            }
+            var rand = Math.floor(Math.random()*899999+100000);
+            sessionStorage.setItem("rand",rand);
+
+            $.ajax({
+                type:"post",
+                url:"http://172.16.45.87/PhpstormProjects/weAreFamily11/php/aliyun/api_demo/SmsDemo.php",
+                data:"tel="+$tel.val()+"&rand="+rand,
+                dataType:"json",
+                success:function (data) {
+                    console.log(data);
+                }
+            })
+        }
+    });
+    var div=$('<div class="yincang"></div>');
+    var lis = $("li");
+    // 昵称
+    $(".btn").on("click",function () {
+        if($(".inpa").val()==""){
+            d(0,"取一个好听的名字吧！！！");
+        }else if($(".register_tel").val()==""){
+            d(1,"要输入手机号哦~");
+        }else if($tel[0].validity.patternMismatch){
+            d(1,"手机号码格式不正确");
+        }else if($(".inp1").val()==""){
+            d(2,"请输入验证码");
+        }else if($(".inp1").val()!=sessionStorage.getItem("rand")){
+            d(2,"验证码错误");
+        }else if($(".ps:eq(0)").val()==""){
+            d(3,"请输入密码");
+        }else if($(".ps:eq(0)")[0].patternMismatch){
+            d(3,"密码格式为：6~15位");
+        }else if($(".ps:eq(1)").val()==""){
+            d(4,"请再次输入密码");
+        }else if($(".ps:eq(1)").val()!=$(".ps:eq(0)").val()){
+            d(4,"两次输入的密码不一致");
+        }else{
+            $.ajax({
+                type:"post",
+                url:"./php/index.php?c=Login&a=register",
+                data:$(".register_form").serialize(),
+                dataType:"json",
+                success:function (data) {
+                    console.log(data);
+                }
+            })
+        }
+    });
+    $(".inp").on("focus",function () {
+        lis.children(".yincang").fadeOut(function () {
+            lis.children(".yincang").remove();
+        });
+    });
+    function d(n,str) {
+        div.fadeIn();
+        div.html(str);
+        lis.eq(n).append(div);
+    }
+</script>
+</body>
+</html>

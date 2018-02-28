@@ -1,0 +1,32 @@
+.white{color: white;}
+#box{width:6.4rem;height:100%;margin: 0 auto;background:#fee9e8; }
+#top{height:1rem;width:100%;background:#ff8288;position: relative;}
+#left{position: absolute;top:-0.15rem;left:0.3rem;}
+#title{font-size: 0.35rem;text-align: center;line-height: 1rem;}
+.section1{width:5.6rem;height:2rem;background: white;border-radius: 0.12rem;margin: 0.75rem auto 0.6rem;position: relative;}
+.section1_title{height:0.7rem;width: 100%;}
+.section1_title>div{height:0.7rem;width:40%;vertical-align: middle;text-align: center;}
+.section1_title>div:nth-child(1){float:left;}
+.section1_title>div:nth-child(2){float:right;}
+.section1_title img{height:0.35rem;width:1.1rem;margin: 0.15rem auto;margin-top:-0.3rem;}
+.section_img{width:4.5rem;margin: 0 auto;position:relative; }
+.girlImg,.boyImg{width: 0.97rem; height: 0.99rem;
+    background: yellowgreen;
+    border-radius: 50%;position: absolute;top: 0.08rem;}
+.girlImg{left: 0;width: 0.97rem; height: 0.99rem;
+    background: url("../images/y1.png");
+    background-size: 0.97rem 0.99rem;
+}
+.boyImg{right: 0;width: 0.97rem; height: 0.99rem;
+    background: url("../images/y2.png");
+    background-size: 0.97rem 0.99rem;
+}
+.lianjie{width:3rem;height:0.65rem;margin-left: 0.75rem;}
+.section2{width: 6.4rem;height:1.6rem;}
+.section2>img{width:2.55rem;height:1.6rem;margin-left:0.6rem; }
+.section3{height:2.1rem;width:5.6rem;margin-top:0.15rem;margin-left:0.4rem;}
+.jianjiao,.jianjiao>img{height:0.3rem;width:0.42rem;}
+.jianjiao>img{width:0.42rem;margin-left:0.85rem;float: left;}
+.message{height:1.8rem;width:100%;background: white;border-radius: 0.12rem;padding: 0.32rem;}
+.rq{width:5.6rem;height:0.96rem;background: #ff8288;border-radius: 0.12rem;margin: 0.4rem auto 1.8rem;color: white;text-align: center;line-height: 0.96rem;font-size: 0.32rem;}
+/*首页结束*/
