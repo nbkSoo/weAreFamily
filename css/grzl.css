@@ -12,12 +12,12 @@
     height: 2.5rem;
 }
 img{
-    margin-left: 0.3rem;
+    margin-left: 0.25rem;
 }
 p{
     color: #ccc;
     font-size: 0.24rem;
-    margin-left: 0.43rem;
+    margin-left: 0.5rem;
 }
 .touxiang{
     width: 1.88rem;
@@ -26,7 +26,18 @@ p{
     border-radius: 100%;
     margin-left: 2.3rem;
     margin-top: 0.6rem;
+    position: relative;
+    z-index: 999;
 }
+.tou{
+    width: 1.88rem;
+    height: 1.78rem;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    left: -0.22rem;
+}
+
 .inp{
     font-size: 0.24rem;
     height: 0.98rem;
@@ -52,4 +63,23 @@ textarea{
     color:#fff;
     text-align: center;
     line-height: 0.98rem;
+}
+.dding{
+    width: 4.5rem;
+    height: 3rem;
+    background: red;
+    position: absolute;
+    top: 40%;
+    left: 15%;
+    display: none;
+    text-align: center;
+    line-height: 3rem;
+    font-size: 18px;
+}
+.ti{
+    width: 1.5rem;
+    height: 0.5rem;
+    font-size: 16px;
+    margin-top: 2rem;
+    margin-left: 2.5rem;
 }
