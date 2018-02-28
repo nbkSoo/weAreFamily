@@ -7,11 +7,12 @@ class LoginController{
     public function register(){
         if(IS_AJAX){
             $data=$_POST;
-            $username = $data["username"];
             $password=$data["password"];
-            $oldData=M()->query_sql("SELECT * FROM users WHERE username='{$username}'");
+            $tel = $data["tel"];
+            print_r($data);
+            $oldData=M()->query_sql("SELECT * FROM users WHERE tel='{$tel}'");
             if(!empty($oldData)){
-                ajax_return("505","用户名已存在","");
+                ajax_return("505","该手机号已经注册！","");
             }else{
                 $newPass=$this->verify($password);
                 $data["password"]=$newPass;

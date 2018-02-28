@@ -27,7 +27,7 @@
 }
 .cont img{width: 1.18rem;height: 1.14rem;margin:0.2rem 0.2rem 0 0}
 .teart{border: none;width: 100%;min-height: 0.68rem;
-    font-size: 0.2rem;text-indent: 0.15rem;
+    font-size: 0.2rem;text-indent: 0.15rem;outline: none;
 }
 .Imge{width: 6.1rem;min-height: 1.36rem;padding: 0.2rem 0 0.2rem 0.1rem;
     box-sizing: border-box;
