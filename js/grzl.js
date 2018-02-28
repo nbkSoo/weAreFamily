@@ -30,7 +30,7 @@ $(function () {
         var data = new FormData();
         data.append("name",$("input[name='username']").val());
         data.append("tel",$("input[name='tel']").val());
-        data.append("title",$("input[name='title']").val());
+        data.append("title",$("textarea[name='title']").val());
         data.append("photo",resultFl);
         if($("#uname").val()==""||$("#tel").val()==""||$("#tie").val()==""){
             $(".dding").css("display","block");
@@ -42,49 +42,50 @@ $(function () {
         }
         $.ajax({
             type:"post",
-            url:"php/server.php",
+            url:"./php/server.php",
             data:data,
             dataType:"json",
             processData:false,
             contentType:false,
             success:function(da){
+                console.log(da);
                 var img = $("<img src='"+da.photo.replace('../',"")+"' id='img' class='top'/>");
                 $("#box").html(img);
                 localStorage.setItem("img",da.photo);
                 localStorage.setItem("name",$("#uname").val());
                 $(".dding").css("display","block");
-                $(".dding").html("修改成功");
-                $(".ti").on("click",function(){
-                    $(".dding").css("display","none");
-                    var da=$("form").serialize();
-                    $.ajax({
-                        type:"post",
-                        url:"../php/index.php?c=Message&a=sendMessage",
-                        data:da,
-                        dataType:"json",
-                        success:function(data){
-                            console.log(data);
-                            if(data.code=="403"){
-                                $(".dding").css("display","block");
-                                $(".dding p").eq(0).html(data.message);
-                                $(".ti").on("click",function(){
-                                    $(".dding").css("display","none");
-                                });
-                            }else if(data.code=="200"){
-                                $(".dding").css("display","block").css("top","120%");
-                                $(".dding p").eq(0).html(data.message);
-                                $(".ti").on("click",function(){
-                                    $(".dding").css("display","none");
-                                    location.reload(true);
-                                });
-
-                            }
-                        }
-                    });
-                    window.location.href="index.html";
-                });
+                $(".dding p").html("修改成功");
             }
         })
+    });
+    console.log(data);
+    $(document).on("click",".ti",function(){
+        $(".dding").css("display","none");
+        var da=$("form").serialize();
+        $.ajax({
+            type:"post",
+            url:"./php/index.php?c=Message&a=sendMessage",
+            data:da,
+            dataType:"json",
+            success:function(data){
+                console.log(data);
+                if(data.code=="403"){
+                    $(".dding").css("display","block");
+                    $(".dding p").eq(0).html(data.message);
+                    $(".ti").on("click",function(){
+                        $(".dding").css("display","none");
+                    });
+                }else if(data.code=="200"){
+                    $(".dding").css("display","block").css("top","120%");
+                    $(".dding p").eq(0).html(data.message);
+                    $(".ti").on("click",function(){
+                        $(".dding").css("display","none");
+                        location.reload(true);
+                    });
 
-    })
+                }
+            }
+        });
+        // window.location.href="index.html";
+    });
 });

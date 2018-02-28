@@ -8,6 +8,7 @@ class MessageController{
         if(IS_AJAX){
             $data=$_POST;
             $files=$_FILES['photo']['name'];
+            p($_FILES);die;
             $target = "../upload/";
             $filename = $target.time().substr($files,strpos($files,"."));
             $data["photoUrl"]=$filename;
