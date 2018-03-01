@@ -4,7 +4,9 @@ function  Move(){
 Move.prototype={
     init:function(){
         this.auto();
+        this.form();
     },
+    //限制行数和设置收起与全文
     auto:function(){
         var One=true;
         var lis=$("ul li");
@@ -29,6 +31,12 @@ Move.prototype={
             }
 
         }
+
+    },
+    form:function(){
+        $(".jump").on("click",function(){
+            window.location.href="add.html";
+        })
 
     }
 };
