@@ -8,15 +8,12 @@ class MessageController{
         if(IS_AJAX){
             $data=$_POST;
             $files=$_FILES['photo']['name'];
-            p($_FILES);die;
             $target = "../upload/";
             $filename = $target.time().substr($files,strpos($files,"."));
             $data["photoUrl"]=$filename;
-//            print_r($data);
-//            die;
             move_uploaded_file($_FILES['photo']['tmp_name'], $filename);
             $data["date"]=time();
-            $result=M()->add("message",$data);
+            $result=M()->add("grzl",$data);
             if(!$result){
                 ajax_return("403","发布失败","");
             }else{

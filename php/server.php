@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin:*');
 $name = isset($_POST['name'])? $_POST['name'] : '';
 $title = isset($_POST['title'])? $_POST['title'] : '';
 $tel = isset($_POST['tel'])? $_POST['tel'] : '';

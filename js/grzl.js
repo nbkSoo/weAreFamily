@@ -7,7 +7,6 @@ $(function () {
         var fl = $(this).get(0).files[0];
         resultFl=fl;
         var fileSize=fl.size/1024;
-        console.log(fileSize);
         if(fileSize>100){
             alert("图片大小不能超过100k");
             return false;
@@ -27,18 +26,18 @@ $(function () {
         };
     });
     $("#btn").on("click",function(){
-        var data = new FormData();
-        data.append("name",$("input[name='username']").val());
-        data.append("tel",$("input[name='tel']").val());
-        data.append("title",$("textarea[name='title']").val());
-        data.append("photo",resultFl);
+        var data = new FormData($("#form")[0]);
+        // data.append("name",$("input[name='username']").val());
+        // data.append("tel",$("input[name='tel']").val());
+        // data.append("title",$("textarea[name='title']").val());
+        // data.append("photo",resultFl);
         if($("#uname").val()==""||$("#tel").val()==""||$("#tie").val()==""){
             $(".dding").css("display","block");
             $(".dding p").eq(0).html("未修改");
             $(".ti").on("tap",function(){
                 $(".dding").css("display","none");
             });
-            return fa;
+            return false;
         }
         $.ajax({
             type:"post",
@@ -48,44 +47,43 @@ $(function () {
             processData:false,
             contentType:false,
             success:function(da){
-                console.log(da);
                 var img = $("<img src='"+da.photo.replace('../',"")+"' id='img' class='top'/>");
                 $("#box").html(img);
                 localStorage.setItem("img",da.photo);
                 localStorage.setItem("name",$("#uname").val());
                 $(".dding").css("display","block");
                 $(".dding p").html("修改成功");
+                $(document).on("click",".ti",function(){
+                    $(".dding").css("display","none");
+                    $.ajax({
+                        type:"post",
+                        url:"./php/index.php?c=Message&a=sendMessage",
+                        data:data,
+                        processData:false,
+                        contentType:false,
+                        dataType:"json",
+                        success:function(data){
+                            if(data.code=="403"){
+                                $(".dding").css("display","block");
+                                $(".dding p").eq(0).html(data.message);
+                                $(".ti").on("click",function(){
+                                    $(".dding").css("display","none");
+                                });
+                            }else if(data.code=="200"){
+                                $(".dding").css("display","block").css("top","120%");
+                                $(".dding p").eq(0).html(data.message);
+                                $(".ti").on("click",function(){
+                                    $(".dding").css("display","none");
+                                    location.reload(true);
+                                });
+
+                            }
+                        }
+                    });
+                    // window.location.href="index.html";
+                });
             }
         })
     });
-    console.log(data);
-    $(document).on("click",".ti",function(){
-        $(".dding").css("display","none");
-        var da=$("form").serialize();
-        $.ajax({
-            type:"post",
-            url:"./php/index.php?c=Message&a=sendMessage",
-            data:da,
-            dataType:"json",
-            success:function(data){
-                console.log(data);
-                if(data.code=="403"){
-                    $(".dding").css("display","block");
-                    $(".dding p").eq(0).html(data.message);
-                    $(".ti").on("click",function(){
-                        $(".dding").css("display","none");
-                    });
-                }else if(data.code=="200"){
-                    $(".dding").css("display","block").css("top","120%");
-                    $(".dding p").eq(0).html(data.message);
-                    $(".ti").on("click",function(){
-                        $(".dding").css("display","none");
-                        location.reload(true);
-                    });
 
-                }
-            }
-        });
-        // window.location.href="index.html";
-    });
 });

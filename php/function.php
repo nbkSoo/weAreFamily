@@ -1,9 +1,11 @@
 <?php
+header('Access-Control-Allow-Origin:*');
 header("content-type:text/html;charset=utf-8");
 function p($a){
     echo "<pre/>";
     var_dump($a);
 }
+
 define("IS_POST",$_SERVER["REQUEST_METHOD"]=="POST"?true:false,true);
 define("IS_AJAX",isset($_SERVER["HTTP_X_REQUESTED_WITH"])&&$_SERVER["HTTP_X_REQUESTED_WITH"]=="XMLHttpRequest"?true:false,true);
 function __autoload($classname){
