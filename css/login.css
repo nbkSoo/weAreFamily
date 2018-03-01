@@ -80,7 +80,7 @@ ul{
 .tankuang{
     width: 3rem;
     height: 2rem;
-    background: white;
+    background: rgba(241,241,241,0.8);
     position: absolute;
     color:#666;
     top: 4.5rem;
@@ -89,11 +89,12 @@ ul{
     font-size: 0.3rem;
     text-align: center;
     line-height: 1rem;
+    border-radius: 8px;
     box-shadow: 0rem 0rem 0.1rem 0.05rem #ddd;
 }
+.contents{    margin-top: 0.2rem;}
 .qd{
     position: absolute;
-    top: 5.75rem;
-    left: 2.8rem;
-    display: none;
+    top: 1.2rem;
+    left: 1rem;
 }
