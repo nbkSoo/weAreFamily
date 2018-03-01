@@ -34,8 +34,10 @@
             <div class="yanzheng">输入手机号填写收到的验证码即可登录</div>
         </li>
     </ul>
-    <div class="tankuang"></div>
-    <input type="button" value="确定" class="qd">
+    <div class="tankuang">
+        <p class="contents"></p>
+        <input type="button" value="确定" class="qd">
+    </div>
 </section>
 <script src="js/jquery-1.8.3.min.js"></script>
 <script>
@@ -66,13 +68,11 @@
     $(".button").on("click",function(){
         if($(".inp").val()==""){
             $(".tankuang").css("display","block");
-            $(".qd").css("display","block");
-            $(".tankuang").html("手机号不能为空！");
+            $(".contents").html("手机号不能为空！");
             return;
         }else if($(".inp")[0].validity.patternMismatch){
             $(".tankuang").css("display","block");
-            $(".qd").css("display","block");
-            $(".tankuang").html("手机号码格式错误");
+            $(".contents").html("手机号码格式错误");
         }else{
             time = setInterval(downTime,1000);
             $(this).addClass("notClick");
@@ -92,7 +92,6 @@
     });
     $(".qd").on("click",function () {
         $(".tankuang").css("display","none");
-        $(".qd").css("display","none");
     })
 
 </script>

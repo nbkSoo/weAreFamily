@@ -38,10 +38,20 @@
 </body>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script>
-    $(function(){
-        $(".Imge img").on("click",function(){
-            $(".cont").append('<img src="'+$(this).attr("src")+'">');
-        });
-    });
+    function Add() {
+        this.init();
+    };
+    Add.prototype={
+        contruction:Add,
+        init:function () {
+            this.img();
+        },
+        img:function () {
+            $(".Imge img").on("click",function(){
+                $(".cont").append('<img src="'+$(this).attr("src")+'">');
+            });
+        }
+    };
+    var add=new Add();
 </script>
 </html>
