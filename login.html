@@ -9,17 +9,93 @@
     <script src="js/app.js"></script>
 </head>
 <body>
-<div class="header">绑定手机号</div>
-<form action="" method="">
-    <span class="content">免费绑定手机，看看谁暗恋了自己</span>
-    <p>
-        <input type="text" placeholder="填写11位手机号码" class="inp">
-        <input type="button" value="获取验证码" class="button">
-    </p>
-    <div class="content">请输入验证码</div>
-    <input type="text" placeholder="请输入手机验证码" class="inp1">
-    <input type="button" value="登录" class="inp1 login">
-    <div class="yanzheng">输入手机号填写收到的验证码即可登录</div>
-</form>
+<main>
+    <div class="header">绑定手机号</div>
+</main>
+<section>
+    <ul>
+        <li>
+            <span class="content">免费绑定手机，看看谁暗恋了自己</span>
+            <p>
+                <input type="tel" name="tel" pattern="^(13|15|18|17|16)\d{9}$" placeholder="填写11位手机号码" class="inp">
+                <input type="button" value="获取验证码" class="button">
+            </p>
+            <!--<div class="yincang">ssss</div>-->
+        </li>
+        <li>
+            <div class="content">请输入验证码</div>
+            <input type="text" placeholder="请输入手机验证码" class="inp1">
+            <!--<div class="yincang">ssss</div>-->
+        </li>
+        <li>
+            <input type="button" value="登录" class="inp1 login">
+        </li>
+        <li>
+            <div class="yanzheng">输入手机号填写收到的验证码即可登录</div>
+        </li>
+    </ul>
+    <div class="tankuang"></div>
+    <input type="button" value="确定" class="qd">
+</section>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script>
+    var div=$('<div class="yincang"></div>');
+    var lis = $("li");
+    $(".login").on("click",function () {
+        if($(".inp").val()==""){
+            d(0,"手机号不能为空");
+        }else if($(".inp")[0].validity.patternMismatch){
+            d(0,"手机号码格式不正确");
+        }else if($(".inp1").val()==""){
+            d(1,"验证码不能为空");
+        }
+    });
+    $(".inp").on("focus",function () {
+        lis.children(".yincang").fadeOut(function () {
+            lis.children(".yincang").remove();
+        });
+    });
+    function d(n,str) {
+        div.fadeIn();
+        div.html(str);
+        lis.eq(n).append(div);
+    }
+
+    var time=null;
+    var t=60;
+    $(".button").on("click",function(){
+        if($(".inp").val()==""){
+            $(".tankuang").css("display","block");
+            $(".qd").css("display","block");
+            $(".tankuang").html("手机号不能为空！");
+            return;
+        }else if($(".inp")[0].validity.patternMismatch){
+            $(".tankuang").css("display","block");
+            $(".qd").css("display","block");
+            $(".tankuang").html("手机号码格式错误");
+        }else{
+            time = setInterval(downTime,1000);
+            $(this).addClass("notClick");
+            function downTime() {
+                t--;
+                $(".button").val(t+"秒后重新获取");
+                if(t<=0){
+                    clearInterval(time);
+                    $(".button").val("获取验证码").removeClass("notClick");
+                    t = 60;
+                }
+            }
+            var rand = Math.floor(Math.random()*899999+100000);
+            sessionStorage.setItem("rand",rand);
+
+        }
+    });
+    $(".qd").on("click",function () {
+        $(".tankuang").css("display","none");
+        $(".qd").css("display","none");
+    })
+
+</script>
+
 </body>
 </html>

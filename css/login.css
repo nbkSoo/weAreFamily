@@ -14,11 +14,23 @@
     color: rgb(102,102,102);
     font-size: 0.3rem;
     /*text-align: center;*/
-    padding-left: 0.35rem;
+    margin-left: 0.35rem;
     line-height: 0.95rem;
+    padding-top: 10px;
+}
+li{
+    position: relative;
+}
+.yincang{
+    position: absolute;
+    top: 2rem;
+    left: 0.5rem;
+    font-size: 0.2rem;
+    color: red;
+    /*display: none;*/
 }
 p{
-   margin-top: -0.35rem;
+    margin-top: -0.35rem;
 }
 .inp{
     width: 3.8rem;
@@ -35,7 +47,11 @@ p{
     display: inline-block;
     border-radius: 7px;
     color: #fff;
-    font-size: 0.3rem;
+    font-size: 0.23rem;
+}
+.notClick{
+    background: #ccc;
+    pointer-events: none;
 }
 .inp1{
     height: 0.7rem;
@@ -50,11 +66,34 @@ p{
     color: #fff;
     font-size: 0.36rem;
     text-align: center;
-    margin-top: 0.4rem;
+    margin-top: 0.6rem;
 }
 .yanzheng{
     font-size: 0.24rem;
     color: rgb(255,130,136);
     margin-left: 0.35rem;
     margin-top: 0.55rem;
+}
+ul{
+    position: relative;
+}
+.tankuang{
+    width: 3rem;
+    height: 2rem;
+    background: white;
+    position: absolute;
+    color:#666;
+    top: 4.5rem;
+    left: 1.8rem;
+    display: none;
+    font-size: 0.3rem;
+    text-align: center;
+    line-height: 1rem;
+    box-shadow: 0rem 0rem 0.1rem 0.05rem #ddd;
+}
+.qd{
+    position: absolute;
+    top: 5.75rem;
+    left: 2.8rem;
+    display: none;
 }
