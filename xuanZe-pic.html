@@ -53,24 +53,39 @@
 </body>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script>
-    $(function(){
-        var arr=[];
-        $(".pic ul li").on("click",function(){
-            if($(this).children("i").hasClass("dui")){
-                $(this).children("i").removeClass("dui").attr("sc","");
-            }else{
-                $(this).children("i").addClass("dui").attr("sc",$(this).children("img").attr("src"));
-            }
-        });
-        $(".head span").on("click",function(){
-            arr.push($("i.dui").attr("sc"));
-            console.log(arr);
+    function Xuanze() {
+        this.init();
+    }
+    Xuanze.prototype={
+        constructor: Xuanze,
+        init:function () {
+            this.pic();
+            this.heads();
+            this.left();
+        },
+        pic:function () {
+            $(".pic ul li").on("click",function(){
+                if($(this).children("i").hasClass("dui")){
+                    $(this).children("i").removeClass("dui").attr("sc","");
+                }else{
+                    $(this).children("i").addClass("dui").attr("sc",$(this).children("img").attr("src"));
+                }
+            });
+        },
+        heads:function () {
+            var arr=[];
+            $(".head span").on("click",function(){
+                arr.push($("i.dui").attr("sc"));
 //            arr.push(".pic");
 //            console.log($(".pic").find(".dui").attr("sc"));
-        });
-        $(".left").on("click",function(){
-            window.history.back();
-        });
-    });
+            });
+        },
+        left:function () {
+            $(".left").on("click",function(){
+                window.history.back();
+            });
+        }
+    };
+    var xuanze=new Xuanze();
 </script>
 </html>

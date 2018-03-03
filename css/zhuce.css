@@ -26,9 +26,9 @@ li{
 }
 .yincang{
     position: absolute;
-    top: 1.28rem;
+    top: 1.2rem;
     left: 2.2rem;
-    font-size: 0.2rem;
+    font-size: 0.3rem;
     color: red;
 }
 .inp1{
@@ -57,4 +57,27 @@ li{
     font-size: 0.35rem;
     color: #fff;
     border:none;
+}
+.tankuang{
+    width: 4rem;
+    height: 2rem;
+    background: rgba(241,241,241,0.8);
+    position: absolute;
+    color: #666;
+    top: 4.5rem;
+    left: 1.4rem;
+    display: none;
+    font-size: 0.3rem;
+    text-align: center;
+    line-height: 1rem;
+    border-radius: 8px;
+    box-shadow: 0rem 0rem 0.1rem 0.05rem #ddd;
+}
+.contents{    margin-top: 0.2rem;
+    color: rgb(255,130,136);}
+.qd{
+    width: 1.3rem;
+    position: absolute;
+    top: 1.2rem;
+    left: 1.3rem;
 }
