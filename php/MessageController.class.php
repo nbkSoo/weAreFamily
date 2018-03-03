@@ -57,7 +57,9 @@ class MessageController{
             //总页数
             $pages=ceil(current(current($count))/$limit);
             //开始记录
+
             $startPage = $page*$limit;
+
             $result=M()->query_sql("SELECT * FROM message order by id desc limit $startPage,$limit");
             foreach ($result as $k=>$v){
                 $result[$k]["date"]=date("Y-m-d H:i:s",$v["date"]);

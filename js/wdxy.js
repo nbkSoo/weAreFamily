@@ -7,18 +7,16 @@ Move.prototype={
         this.auto();
         this.form();
         this.delete();
+        this.getMessage();
     },
     //限制行数和设置收起与全文
     auto:function(){
-
         var lis=$("ul li");
         // console.log(lis.length);
         for(var i=0; i<lis.length; i++){
             var tit=$("li .neirong").eq(i).html().length;
             var img=$("li .txtImg").eq(i);
             var imgLength=$("span",img).length;
-            // console.log(imgLength);
-
             if(tit>100){
                 $(".neirong").eq(i).addClass("txt");
                 $(".slide").eq(i).css("display","block");
@@ -51,9 +49,8 @@ Move.prototype={
                 });
             }else{
                 $("span",img).css({
-                    maxWidth:"30%",
-                    minWidth:"30%",
-                    margin:"0.03rem"
+                    width:"1rem",
+                    margin:"0.1rem"
                 });
             }
         }
@@ -66,9 +63,97 @@ Move.prototype={
     },
     //删除功能
     delete:function(){
-        $(".delete").on("click",function(){
+        $(document).on("click",".delete",function(){
+            $(this).parent("li").fadeOut(function () {
+                $(this).remove();
+            });
+            $.ajax({
+                type:"post",
+                url:"./php/index.php?c=Message&a=deleteMessage",
+                data:"mid="+$(this).attr("mid"),
+                dataType:"json",
+                success:function (data) {
+                    console.log(data);
+                }
+            })
+        })
+    },
+    //获取留言功能
+    getMessage:function () {
+        $.ajax({
+            type:"get",
+            url:"./php/index.php?c=Message&a=returnMessage",
+            processData: false,
+            dataType:"json",
+            success:function (data) {
+                if(data.code=="200"){
+                    var d = data.data.data;
+                    for(var i=0; i<d.length; i++){
+                        var html = '';
+                        var tit=d[i].title.length;
+                        var imgs = d[i].photoUrl.split(";");
+                        var img = '';
+                        if(imgs.length<=1){
+                            $.each(imgs,function (index, item) {
+                                img += '<span style="min-width: 2rem; max-width: 100%"><img src="' + item.substr(3) + '"></span>';
+                            })
+                        }else if(imgs<=2){
+                            $.each(imgs,function (index, item) {
+                                img+='<span style="width:44%">'+'<img src="'+item.substr(3)+'">'+'</span>';
+                            });
+                        }else if(imgs<=3){
+                            $.each(imgs,function (index, item) {
+                                img+='<span style="width:28%">'+'<img src="'+item.substr(3)+'">'+'</span>';
+                            });
 
-            $(this).parent("li").remove();
+                        }else{
+                            $.each(imgs,function (index, item) {
+                                img+='<span style="width:1rem;margin:0.1rem;height:1rem;">'+'<img src="'+item.substr(3)+'">'+'</span>';
+                            });
+                        }
+                        if(tit>100){
+                            var neirong = '<p class="neirong txt">'+d[i].title+'</p>';
+                            $(".slide").eq(i).css("display","block");
+                            var slide = '<p class="slide">全文</p>';
+                        }else{
+                            var neirong = '<p class="neirong">'+d[i].title+'</p>';
+                            var slide = '';
+                        }
+                        // 图片的数量决定图片的大小
+                        html+= '<li>'+
+                            '<span class="touxiang">'+
+                            '<img src="images/tx.png" alt="" class="tx">'+
+                            '</span>'+
+                            '<div class="title">'+
+                            '<span class="uname">娟子</span>'+
+                            '<span class="time">8小时前</span>'+
+                            neirong+
+                            slide+
+                            '<p class="txtImg">'+
+                            img+
+                            '</p>'+
+                            '</div>'+
+                            '<p class="delete" mid="'+d[i].id+'"><img src="images/delete.png" alt=""></p>'+
+                            '</li>';
+                            $('ul').append(html);
+                    }
+                    var One=true;
+                    $(document).on("click",".slide",function(){
+                        if(One){
+                            $(this).prev().removeClass("txt");
+                            $(this).html("收起");
+                            One=false;
+                        }else{
+                            $(this).prev().addClass("txt");
+                            $(this).html("全文");
+                            One=true;
+                        }
+                    });
+                }
+                else if(data.code=="403"){
+                    alert(data.message);
+                }
+            }
         })
     }
 };
