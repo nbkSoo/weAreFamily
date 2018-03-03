@@ -7,13 +7,35 @@ class MessageController{
     public function sendMessage(){
         if(IS_AJAX){
             $data=$_POST;
-            $files=$_FILES['photo']['name'];
-            $target = "../upload/";
-            $filename = $target.time().substr($files,strpos($files,"."));
-            $data["photoUrl"]=$filename;
-            move_uploaded_file($_FILES['photo']['tmp_name'], $filename);
-            $data["date"]=time();
-            $result=M()->add("grzl",$data);
+//            print_r($_FILES["photo"]);die;
+            if(is_array($_FILES)){
+
+                $target = "../upload/";
+                $saveFilename = "";
+//                print_r($_FILES["photo"]);
+                for($i=0;$i<count($_FILES["photo"]["name"]);$i++){
+                    $randNum = rand(100000,999999);
+                    $photoName = $_FILES["photo"]["name"][$i];
+                    $filename = $target.$randNum.time().substr($photoName,strpos($photoName,"."));
+                    $saveFilename .= ";".$filename;
+                    $tmpName = $_FILES["photo"]["tmp_name"][$i];
+                    move_uploaded_file($tmpName, $filename);
+                }
+                $saveFilename = substr($saveFilename,1);
+                $data['photoUrl'] = $saveFilename;
+                $data["date"] = time();
+                $result = M()->add("message",$data);
+            }else{
+                $files=$_FILES['photo']['name'];
+                $target = "../upload/";
+                $filename = $target.time().substr($files,strpos($files,"."));
+                $data["photoUrl"]=$filename;
+                move_uploaded_file($_FILES['photo']['tmp_name'], $filename);
+                $data["date"]=time();
+                $result=M()->add("grzl",$data);
+            }
+
+
             if(!$result){
                 ajax_return("403","发布失败","");
             }else{

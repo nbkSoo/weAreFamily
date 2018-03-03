@@ -13,45 +13,44 @@
     <header>
         <div class="head">
             <i class="left"></i>
-            <span>发送</span>
+            <span id="addSubmit">发送</span>
+        </div>
+        <div class="tankuang">
+            <p class="contents"></p>
+            <input type="button" value="确定" class="qd">
         </div>
     </header>
     <section>
-        <div class="content">
+        <form class="content" id="content">
             <div class="cont">
-                <textarea class="teart" placeholder="写下你此刻的想法..."></textarea>
+                <textarea class="teart" name="title" placeholder="写下你此刻的想法..."></textarea>
+
             </div>
             <div class="Imge">
-                <img src="images/Imge-01.png" alt="">
-                <img src="images/Imge-02.png" alt="">
-                <img src="images/Imge-01.png" alt="">
-                <img src="images/Imge-02.png" alt="">
+                <div class="picBox">
+
+                </div>
+                <!--<img src="images/Imge-01.png" alt="">-->
+                <!--<img src="images/Imge-02.png" alt="">-->
+                <!--<img src="images/Imge-01.png" alt="">-->
+                <!--<img src="images/Imge-02.png" alt="">-->
             </div>
-            <a href="xuanZe-pic.html">
+            <a href="javascript:;">
                 <div class="add">
                     <img src="images/add-1.png" alt="">
                 </div>
             </a>
-        </div>
+        </form>
+        <!--<form action="" id="picsForm">-->
+            <!---->
+        <!--</form>-->
+       <!---->
     </section>
 </div>
 </body>
 <script src="js/jquery-3.2.1.min.js"></script>
-<script>
-    function Add() {
-        this.init();
-    };
-    Add.prototype={
-        contruction:Add,
-        init:function () {
-            this.img();
-        },
-        img:function () {
-            $(".Imge img").on("click",function(){
-                $(".cont").append('<img src="'+$(this).attr("src")+'">');
-            });
-        }
-    };
-    var add=new Add();
+<script src="js/zepto.js"></script>
+<script src="js/add.js">
+
 </script>
 </html>

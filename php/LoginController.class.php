@@ -52,7 +52,13 @@ class LoginController{
             }
         }
     }
-
+    /*
+     * 登录方法二
+     */
+    public function login2(){
+        session_start();
+        ajax_return("200","成功",$_SESSION);
+    }
     /*
      * 退出登录方法
      */
