@@ -1,3 +1,105 @@
+.box_content{
+    width: 6.4rem;
+    height: 10.36rem;
+    /*overflow: hidden;*/
+    position: relative;
+}
+/*弹出框*/
+.box_left{
+    position: absolute;
+    top:30px;
+    left: -4.4rem;
+    width: 4.4rem;
+    height: 100%;
+    background: url("../images/bg.png");
+    background-size: 4.4rem 100%;
+    z-index: 10;
+}
+.tp{
+    width: 4.16rem;
+    height: 2.1rem;
+    line-height: 2.08rem;
+    padding: 0.12rem;
+    margin: 0 auto;
+    border-bottom: 0.02rem solid #aeaaa7;
+}
+.tp span{
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    margin: 0.54rem 0.3rem;
+    float: left;
+    position: relative;
+}
+.tp span img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.tp p{
+    font-size: 0.33rem;
+    float: left;
+    font-weight: bold;
+    color: black;
+}
+.cb{
+    width: 4.4rem;
+    height: 1.07rem;
+    line-height: 1.07rem;
+    padding: 0.2rem 0;
+}
+.cb i{
+    display: block;
+    width: 0.67rem;
+    height: 0.67rem;
+    border-radius: 50%;
+    float: left;
+    margin: 0.2rem 0.23rem 0.2rem 0.5rem;
+    background-size: 0.67rem 0.67rem;
+}
+.i1{
+    background: url("../images/l_07.png");
+}
+.i2{
+    background: url("../images/l_10.png");
+}
+.i3{
+    background: url("../images/l_12.png");
+}
+.i4{
+    background: url("../images/l_14.png");
+}
+.i5{
+    background: url("../images/l_16.png");
+}
+.cb p{
+    font-size: 0.3rem;
+    float: left;
+}
+.cb p:hover{
+    color: #fc9093;
+}
+.cb p a{
+    color: #616361;
+    text-decoration: none;
+}
+.box_right{
+    height:100%;
+    width: 6.4rem;
+    position: absolute;
+    top:0.86rem;
+    left: 0;
+}
+.white{color: white;}
+
+#box{width:6.4rem;height:100%;margin: 0 auto;background:#fee9e8; }
+#top{height:1rem;width:100%;background:#ff8288;position: relative;}
+#left{position: absolute;top:-0.15rem;left:0.3rem;}
+#title{font-size: 0.35rem;text-align: center;line-height: 1rem;}
+/*首页结束*/
 .header{
     width: 100%;
     height: 0.86rem;
@@ -112,4 +214,140 @@ ul li {
 .delete img{
     width: 100%;
     height: 100%;
+}
+.imgs{
+    position: absolute;
+    top: 0.15rem;
+    right: 0.3rem;
+}
+.white{color: white;}
+
+#box{width:6.4rem;height:100%;margin: 0 auto;background:#fee9e8;}
+
+
+#top{height:1rem;width:100%;background:#ff8288;
+    position: fixed;
+    z-index: 9999;}
+#left{position: absolute;top:-0.15rem;left:0.3rem;}
+#title{font-size: 0.35rem;text-align: center;line-height: 1rem;}
+/*首页结束*/
+.header{
+    width: 100%;
+    height: 0.86rem;
+    background: rgb(255,130,136);
+    color: #fff;
+    font-size: 0.34rem;
+    text-align: center;
+    line-height: 0.86rem;
+    position: relative;
+
+}
+.header p{
+    width: 0.65rem;
+    height: 0.88rem;
+    position: absolute;
+    top: 0;
+    left: 5.5rem;
+}
+ul{
+    width: 95%;
+    margin: 0 auto;
+}
+ul li {
+    width: 100%;
+    margin: 0.2rem 0;
+    padding-bottom: 0.1rem;
+    border-radius: 7px;
+    background: white;
+    font-size: 16px;
+}
+.touxiang{
+    width: 20%;
+    float: left;
+}
+.touxiang img{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100%;
+    margin: 0.2rem 0 0 0.1rem;
+}
+.title{
+    width: 80%;
+    margin-left: 1.2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.uname{
+    font-size: 0.3rem;
+    color: rgb(255,130,136);
+    position: absolute;
+    left: 0.2rem;
+    top: 0.2rem;
+}
+.time{
+    font-size: 0.24rem;
+    color: #f2f2f2;
+    position: absolute;
+    top: 0.2rem;
+    right: 0.32rem;
+}
+.neirong{
+    width: 92%;
+    margin: 0.7rem 0 0.2rem 0.2rem;
+    font-size: 0.24rem;
+}
+.txt{
+    width: 92%;
+    margin: 0.7rem 0 0 0.2rem;
+    font-size: 0.24rem;
+    overflow : hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.txtImg{
+    box-sizing: border-box;
+    padding-left: .2rem;
+    width: 4rem;
+}
+.txtImg::after{
+    content:'';
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+.txtImg span{
+    min-height:1rem;
+    display: block;
+    margin: 0 0.1rem;
+    float: left;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+.txtImg span img{
+    width: 100%;
+    /*height: 100%;*/
+
+}
+.slide{
+    width: 0.6rem;
+    color: royalblue;
+    margin: 0.1rem 0 0.1rem 4.1rem;
+    display: block;
+    font-size: 0.24rem;
+}
+
+.delete{
+    width: 0.6rem;
+    margin: 0.2rem 0 0 87%;
+}
+.delete img{
+    width: 100%;
+    height: 100%;
+}
+.imgs{
+    position: absolute;
+    top: 0.15rem;
+    right: 0.3rem;
 }
