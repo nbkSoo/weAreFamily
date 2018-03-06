@@ -8,6 +8,7 @@ $(function(){
         init:function(){
             this.auto();
             this.href();
+            this.Left();
         },
         auto:function(){
             $(".tc").on("click",function(){
@@ -30,7 +31,16 @@ $(function(){
             $("#people img").on("click",function(){
                 window.location.href="grzl.html";
             });
-    }
+        },
+        //实时获取滚动条，让右边的始终居中
+        Left:function(){
+            window.onscroll=function(){
+                var sTop=document.documentElement.scrollTop||document.body.scrollTop;
+                //当滑倒第一层楼层显示
+                console.log(sTop);
+                $(".box_left").css("top",30+sTop+"px");
+            }
+        }
 
     }
     var move=new Move();
