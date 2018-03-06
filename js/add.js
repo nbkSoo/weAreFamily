@@ -55,6 +55,7 @@ $(function () {
                             window.URL.revokeObjectURL(fl);
                         }
                     })
+                    return false;
                 }
             })
         },
