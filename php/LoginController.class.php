@@ -9,7 +9,11 @@ class LoginController{
             $data=$_POST;
             $password=$data["password"];
             $tel = $data["tel"];
-            print_r($data);
+            $timer = time()-$_COOKIE["verifyTime"];
+            if($timer>300){
+                ajax_return("403","验证码已经过期！","");
+                die;
+            }
             $oldData=M()->query_sql("SELECT * FROM users WHERE tel='{$tel}'");
             if(!empty($oldData)){
                 ajax_return("505","该手机号已经注册！","");
@@ -56,8 +60,23 @@ class LoginController{
      * 登录方法二
      */
     public function login2(){
-        session_start();
-        ajax_return("200","成功",$_SESSION);
+        if(IS_AJAX){
+            $data = $_POST;
+            $tel = $data["tel"];
+            $oldData = M()->query_sql("SELECT * FROM users WHERE tel='{$tel}'");
+            $timer = time()-$_COOKIE["verifyTime"];
+            if(empty($oldData)){
+                ajax_return("500","用户名不存在","");
+            }else{
+                if($timer>300){
+                    ajax_return("403","验证码已经过期！","");
+                }else{
+                    ajax_return("200","登录成功","");
+                }
+
+            }
+        }
+
     }
     /*
      * 退出登录方法

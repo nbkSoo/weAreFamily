@@ -76,9 +76,11 @@ class SmsDemo
 
         $rand = rand(100000,999999);
         // 必填，设置短信接收号码
+        setcookie("verifyTime",time(),time()+60*60*60,"/");
+        ajax_return("200","发送成功",$rand);
+        die;
         $request->setPhoneNumbers($tel);
-//        p($_SESSION);
-//        ajax_return("200","发送成功",$_SESSION);
+
 
         // 必填，设置签名名称，应严格按"签名名称"填写，请参考: https://dysms.console.aliyun.com/dysms.htm#/develop/sign
         $request->setSignName("暗恋");
@@ -101,10 +103,7 @@ class SmsDemo
         // 发起访问请求
         $acsResponse = static::getAcsClient()->getAcsResponse($request);
         if($acsResponse->Message == "OK"){
-            $getTime = time();
-            session_start();
-            $_SESSION["rand"] = $rand;
-            $_SESSION["getTime"] = $getTime;
+            ajax_return("200","发送成功",$rand);
         }
         return $acsResponse;
 

@@ -5,7 +5,7 @@
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1,user-scalable=no"/>
     <link rel="stylesheet" href="css/chongzhi.css">
-    <link rel="stylesheet" href="css/zhuce1.css">
+    <link rel="stylesheet" href="css/zhuce.css">
     <script src="js/app.js"></script>
 </head>
 <body>
@@ -65,21 +65,19 @@
             this.qd();
         },
         click:function () {
+            var _this=this;
             $(".inp2").on("click",function(){
                 // var $tel = $(".register_tel");
-                var _this=this;
                 if($(".register_tel").val()==""){
                     $(".tankuang").css("display","block");
                     $(".contents").html("手机号不能为空！");
                     // alert("手机号不能为空！");
-                    return;
                 }else if($(".register_tel")[0].validity.patternMismatch){
                     $(".tankuang").css("display","block");
                     $(".contents").html("手机号码格式错误");
-                    // alert("手机号码格式错误");
                 }else{
                     _this.timer = setInterval(downTime,1000);
-                    $(_this).addClass("notClick");
+                    $(this).addClass("notClick");
                     function downTime() {
                         _this.s--;
                         $(".inp2").val(_this.s+"秒后重新获取");
@@ -89,15 +87,13 @@
                             _this.s = 60;
                         }
                     }
-                    var rand = Math.floor(Math.random()*899999+100000);
-                    sessionStorage.setItem("rand",rand);
-
                     $.ajax({
                         type:"post",
-                        url:"http://172.16.45.87/PhpstormProjects/weAreFamily11/php/aliyun/api_demo/SmsDemo.php",
-                        data:"tel="+$(".register_tel").val()+"&rand="+rand,
+                        url:"./php/aliyun/api_demo/SmsDemo.php",
+                        data:"tel="+$(".register_tel").val(),
                         dataType:"json",
                         success:function (data) {
+                            sessionStorage.setItem("rand",data.data);
                             console.log(data);
                         }
                     })
@@ -133,6 +129,13 @@
                         dataType:"json",
                         success:function (data) {
                             console.log(data);
+                            if(data.code=="403"){
+                                d(2,"验证码已过期，请重新获取");
+                            }else if(data.code=="505"){
+                                d(1,data.message);
+                            }else if(data.code=="200"){
+                                $(".tankuang").show().children("p").html("注册成功");
+                            }
                         }
                     })
                 }
