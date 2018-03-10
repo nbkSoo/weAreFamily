@@ -82,10 +82,11 @@ Move.prototype={
     getMessage:function () {
         $.ajax({
             type:"get",
-            url:"./php/index.php?c=Message&a=returnMessage",
+            url:"http://172.16.45.87/PhpstormProjects/weAreFamily11/php/index.php?c=Message&a=returnMessage",
             processData: false,
             dataType:"json",
             success:function (data) {
+                console.log(data);
                 if(data.code=="200"){
                     var d = data.data.data;
                     for(var i=0; i<d.length; i++){
@@ -153,8 +154,11 @@ Move.prototype={
                 else if(data.code=="403"){
                     alert(data.message);
                 }
-            }
-        })
+            },
+        });
+        function cb(data) {
+            console.log(data);
+        }
     }
 };
 var move=new Move();

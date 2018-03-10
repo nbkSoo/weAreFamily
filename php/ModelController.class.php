@@ -65,12 +65,7 @@ class ModelController{
      */
     public function update($table,$data,$id){
         try{
-//          变成适合sql插入的格式
-//            $arr=Array(
-//              "username" => "sdf",
-//              "password" => "dsf"
-//            );
-            //update user set username='sdf',password='dsf' where id=2;
+
             $sql="";
             foreach($data as $k=>$v){
                 $sql.=",$k='$v'";

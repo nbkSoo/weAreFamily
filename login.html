@@ -75,6 +75,8 @@
                         if(data.code=="403"){
                             d(1,data.message);
                         }else if(data.code=="200"){
+                            console.log(444);
+                            sessionStorage.setItem("login",$(".tel_inp").val());
                             $(".tankuang").show().children("p").html("登录成功");
                         }else if(data.code=="500"){
                             d(0,"该手机号尚未注册");
@@ -160,6 +162,7 @@
         qd:function () {
             $(".qd").on("click",function () {
                 $(".tankuang").css("display","none");
+                location.href = "mainz.html";
             })
         }
     };

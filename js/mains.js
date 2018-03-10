@@ -1,4 +1,3 @@
-
 $(function(){
     function Move(){
         this.tf=true;
@@ -6,22 +5,8 @@ $(function(){
     }
     Move.prototype={
         init:function(){
-            this.auto();
             this.href();
             this.Left();
-        },
-        auto:function(){
-            $(".tc").on("click",function(){
-                if(this.tf){
-                    $(".box_left").css("left","0px");
-                    $(".box_right").css("left","4.4rem");
-                    this.tf = false;
-                }else{
-                    $(".box_left").css("left","-4.4rem");
-                    $(".box_right").css("left","0px");
-                    this.tf = true;
-                }
-            }.bind(this));
         },
         //点击个人头像和名字跳转页面
         href:function(){
@@ -37,12 +22,10 @@ $(function(){
             window.onscroll=function(){
                 var sTop=document.documentElement.scrollTop||document.body.scrollTop;
                 //当滑倒第一层楼层显示
-                console.log(sTop);
                 $(".box_left").css("top",30+sTop+"px");
             }
         }
-
-    }
+    };
     var move=new Move();
 
 

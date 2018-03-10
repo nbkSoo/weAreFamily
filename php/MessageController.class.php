@@ -1,5 +1,4 @@
 <?php
-header('Access-Control-Allow-Origin:*');
 class MessageController{
     /*
      * 添加留言
@@ -47,7 +46,7 @@ class MessageController{
      * 返回留言
      */
     public function returnMessage(){
-        if(IS_AJAX){
+//        if(IS_AJAX){
             //当前分页
             $page= max(0, intval($_GET['page']));
             //数据库存数量,总记录数
@@ -70,14 +69,12 @@ class MessageController{
                 "pages"=>$pages,
                 "limit"=>$limit,
             );
-//           print_r($getData);
-//           die;
             if(!empty($getData)&&current(current($count))>0){
                 ajax_return("200","成功",$getData);
             }else{
                 ajax_return("403","还没有留言，去留言吧","");
             }
-        }
+//        }
     }
     /*
      * 删除留言
