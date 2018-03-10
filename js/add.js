@@ -8,6 +8,7 @@ $(function () {
             this.img();
             this.picSelect();
             this.addSubmit();
+            this.jump();
         },
         img:function () {
             var _this = this;
@@ -85,7 +86,14 @@ $(function () {
         },
         tipK:function (str) {
             $(".tankuang").show().children("p").html(str);
-        }
+        },
+        //后退按钮
+        jump:function(){
+            $(".left").on("click",function(){
+                window.history.back(-1);
+            });
+
+    }
     };
     var add=new Add();
 })
