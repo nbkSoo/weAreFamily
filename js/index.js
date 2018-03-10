@@ -36,6 +36,6 @@ var swiper = new Swiper('.swiper-container', {
         }
     }
 });
-$(".go").on("click",function(){
+$(".goes").on("click",function(){
     window.location.href="mainz.html";
 });
