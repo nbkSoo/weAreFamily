@@ -13,6 +13,7 @@ $(function () {
         init: function () {
             this.sendPic();
             this.submit();
+            this.jump();
         },
         sendPic: function () {
             $("#box").on("click", function (e) {
@@ -86,7 +87,13 @@ $(function () {
                 });
             });
 
-        }
+        },
+        //后退按钮
+        jump:function(){
+            $(".jump").on("click",function(){
+                window.history.back(-1);
+            })
+    }
     };
     var grzl = new Grzl();
 });

@@ -17,9 +17,11 @@ Move.prototype={
             var tit=$("li .neirong").eq(i).html().length;
             var img=$("li .txtImg").eq(i);
             var imgLength=$("span",img).length;
-            if(tit>100){
+            if(tit>=120){
                 $(".neirong").eq(i).addClass("txt");
                 $(".slide").eq(i).css("display","block");
+            }else{
+                $(".slide").eq(i).css("display","none");
             }
             var One=true;
             $(".slide").on("click",function(){
@@ -67,15 +69,15 @@ Move.prototype={
             $(this).parent("li").fadeOut(function () {
                 $(this).remove();
             });
-            $.ajax({
-                type:"post",
-                url:"./php/index.php?c=Message&a=deleteMessage",
-                data:"mid="+$(this).attr("mid"),
-                dataType:"json",
-                success:function (data) {
-                    console.log(data);
-                }
-            })
+            // $.ajax({
+            //     type:"post",
+            //     url:"./php/index.php?c=Message&a=deleteMessage",
+            //     data:"mid="+$(this).attr("mid"),
+            //     dataType:"json",
+            //     success:function (data) {
+            //         console.log(data);
+            //     }
+            // })
         })
     },
     //获取留言功能

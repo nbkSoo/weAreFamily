@@ -90,7 +90,7 @@
     height:100%;
     width: 6.4rem;
     position: absolute;
-    top:0.86rem;
+    top:1rem;
     left: 0;
 }
 .white{color: white;}
@@ -208,7 +208,8 @@ ul li {
 }
 
 .delete{
-    width: 0.6rem;
+    width: 0.5rem;
+    height: 0.6rem;
     margin: 0.2rem 0 0 87%;
 }
 .delete img{
@@ -339,7 +340,8 @@ ul li {
 }
 
 .delete{
-    width: 0.6rem;
+    width: 0.5rem;
+    height: 0.6rem;
     margin: 0.2rem 0 0 87%;
 }
 .delete img{

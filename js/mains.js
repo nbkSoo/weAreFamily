@@ -37,7 +37,7 @@ $(function(){
             window.onscroll=function(){
                 var sTop=document.documentElement.scrollTop||document.body.scrollTop;
                 //当滑倒第一层楼层显示
-                console.log(sTop);
+                // console.log(sTop);
                 $(".box_left").css("top",30+sTop+"px");
             }
         }

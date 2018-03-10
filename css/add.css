@@ -11,9 +11,10 @@
     text-align: center;
     line-height: 0.6rem;
 }
-.left{width: 0.4rem;height: 0.4rem;float: left;
-    background: url("../images/left.png") no-repeat;
-    background-size: cover;margin: 0.2rem 0;
+.left{width: 0.86rem;height:0.86rem;float: left;margin: 0.2rem 0;}
+.left img{
+    width: 0.51rem;
+    height: 0.33rem;
 }
 .head span{float: right;padding-right: 0.3rem;font-size: 0.3rem;line-height: 0.86rem;}
 section{
