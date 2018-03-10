@@ -12,7 +12,6 @@ Move.prototype={
     //限制行数和设置收起与全文
     auto:function(){
         var lis=$("ul li");
-        // console.log(lis.length);
         for(var i=0; i<lis.length; i++){
             var tit=$("li .neirong").eq(i).html().length;
             var img=$("li .txtImg").eq(i);
@@ -155,12 +154,10 @@ Move.prototype={
                 }
                 else if(data.code=="403"){
                     alert(data.message);
+                    location.href = "add.html";
                 }
-            },
+            }
         });
-        function cb(data) {
-            console.log(data);
-        }
     }
 };
 var move=new Move();

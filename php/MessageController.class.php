@@ -4,14 +4,11 @@ class MessageController{
      * 添加留言
      */
     public function sendMessage(){
-        if(IS_AJAX){
             $data=$_POST;
-//            print_r($_FILES["photo"]);die;
+//            print_r($_FILES);die;
             if(is_array($_FILES)){
-
                 $target = "../upload/";
                 $saveFilename = "";
-//                print_r($_FILES["photo"]);
                 for($i=0;$i<count($_FILES["photo"]["name"]);$i++){
                     $randNum = rand(100000,999999);
                     $photoName = $_FILES["photo"]["name"][$i];
@@ -40,7 +37,6 @@ class MessageController{
             }else{
                 ajax_return("200","发布成功","");
             }
-        }
     }
     /*
      * 返回留言
