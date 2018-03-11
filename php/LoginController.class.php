@@ -60,7 +60,6 @@ class LoginController{
      * 登录方法二
      */
     public function login2(){
-        if(IS_AJAX){
             $data = $_POST;
             $tel = $data["tel"];
             $oldData = M()->query_sql("SELECT * FROM users WHERE tel='{$tel}'");
@@ -76,7 +75,6 @@ class LoginController{
                 }
 
             }
-        }
 
     }
     /*
