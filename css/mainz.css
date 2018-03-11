@@ -32,6 +32,7 @@
     margin: 0.54rem 0.3rem;
     float: left;
     position: relative;
+    overflow: hidden;
 }
 .tp span img{
     width: 100%;

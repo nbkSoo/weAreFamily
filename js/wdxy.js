@@ -68,25 +68,29 @@ Move.prototype={
             $(this).parent("li").fadeOut(function () {
                 $(this).remove();
             });
-            // $.ajax({
-            //     type:"post",
-            //     url:"./php/index.php?c=Message&a=deleteMessage",
-            //     data:"mid="+$(this).attr("mid"),
-            //     dataType:"json",
-            //     success:function (data) {
-            //         console.log(data);
-            //     }
-            // })
+            $.ajax({
+                type:"post",
+                url:"./php/index.php?c=Message&a=deleteMessage",
+                data:"mid="+$(this).attr("mid"),
+                dataType:"json",
+                success:function (data) {
+                    console.log(data);
+                }
+            })
         })
     },
     //获取留言功能
     getMessage:function () {
         $.ajax({
             type:"get",
-            url:"http://172.16.45.87/PhpstormProjects/weAreFamily11/php/index.php?c=Message&a=returnMessage",
+            url:"./php/index.php?c=Message&a=returnMessage",
             processData: false,
             dataType:"json",
+            beforeSend:function () {
+                $(".loader").show();
+            },
             success:function (data) {
+                $(".loader").hide();
                 console.log(data);
                 if(data.code=="200"){
                     var d = data.data.data;
@@ -110,7 +114,7 @@ Move.prototype={
 
                         }else{
                             $.each(imgs,function (index, item) {
-                                img+='<span style="width:1rem;margin:0.1rem;height:1rem;">'+'<img src="'+item.substr(3)+'">'+'</span>';
+                                img+='<span style="width:1rem;margin:0.07rem;height:1rem;">'+'<img src="'+item.substr(3)+'">'+'</span>';
                             });
                         }
                         if(tit>100){

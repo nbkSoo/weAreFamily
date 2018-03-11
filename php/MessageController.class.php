@@ -5,7 +5,6 @@ class MessageController{
      */
     public function sendMessage(){
             $data=$_POST;
-//            print_r($_FILES);die;
             if(is_array($_FILES)){
                 $target = "../upload/";
                 $saveFilename = "";
@@ -48,7 +47,7 @@ class MessageController{
             //数据库存数量,总记录数
             $count=M()->query_sql("SELECT count(*) FROM message");
             //每页数量限制
-            $limit=2;
+            $limit=5;
             //总页数
             $pages=ceil(current(current($count))/$limit);
             //开始记录
@@ -117,10 +116,7 @@ class MessageController{
             $data["photoUrl"]=$filename;
             move_uploaded_file($_FILES['photo']['tmp_name'], $filename);
             $id=$data["mid"];
-//            p($id);die;
             unset($data["mid"]);
-//            print_r($id);
-//            die;
             $result=M()->update("message",$data,$id);
             if(!$result){
                 ajax_return("403","没有任何修改","");
@@ -137,32 +133,25 @@ class MessageController{
             session_start();
             $mid = $_POST['mid'];
             $uid = $_SESSION['uid'];
-//            p($uid);die;
             if(empty($mid)){
                 ajax_return("400","缺少参数","");
             }
             //获取中间表数据
             $sql = "select userid,messageid from dianzan where userid={$uid} and messageid={$mid}";
             $getData = M()->query_sql($sql);
-//            p($getData);die;
-            //获取文章表信息
             $getMessage = M()->query_sql("select id,dz from message where id={$mid}");
             $getMessage =current($getMessage);
-//            p($getMessage);die;
             if(empty($getData)){
                 $updateData = [
                     'dz'=>$getMessage['dz']+1
                 ];
-//                p($updateData);die;
                 $mResult=M()->update('message',$updateData,$mid);
-//                p($mResult);die;
                 $insertData = [
                     'userid'=>$uid,
                     'messageid'=>$mid,
                     'dzDate'=>time(),
                 ];
                 $dzResult=M()->add('dianzan',$insertData);
-//                p($dzResult);die;
                 ajax_return("200","点赞成功","");
 
             }else{
@@ -170,10 +159,8 @@ class MessageController{
                     'dz'=>max($getMessage['dz']-1,0)
                 ];
                 $mResult=M()->update('message',$updateData,$mid);
-//                p($mResult);die;
                 $sql = "delete from dianzan where userid={$uid} and messageid={$mid}";
                 $dzResult=M()->delete_sql1($sql);
-//                p($dzResult);die;
                 ajax_return("202","取消点赞成功","");
             }
         }

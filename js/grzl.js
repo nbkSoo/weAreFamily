@@ -14,6 +14,12 @@ $(function () {
             this.sendPic();
             this.submit();
             this.jump();
+            if(localStorage.getItem("img")){
+                $("#box>img").attr("src",localStorage.getItem("img").substr(3)).addClass("tou");
+            }
+            if(sessionStorage.getItem("login")){
+                $("#uname").val(sessionStorage.getItem("login"));
+            }
         },
         sendPic: function () {
             $("#box").on("click", function (e) {
@@ -64,7 +70,6 @@ $(function () {
                         var img = $("<img src='"+da.photo.replace('../',"")+"' id='img' class='top'/>");
                         $("#box").html(img);
                         localStorage.setItem("img",da.photo);
-                        localStorage.setItem("name",$("#uname").val());
                         $(".dding").css("display","block");
                         $(".dding p").html("修改成功");
                     }
@@ -73,7 +78,7 @@ $(function () {
                     $(".dding").css("display","none");
                     $.ajax({
                         type:"post",
-                        url:"./php/index.php?c=Message&a=sendMessage",
+                        url:"http://172.16.45.87/PhpstormProjects/weAreFamily11/php/index.php?c=Message&a=sendMessage",
                         data:_this.formData,
                         processData:false,
                         contentType:false,

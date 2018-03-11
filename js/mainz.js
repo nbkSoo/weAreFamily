@@ -14,6 +14,16 @@ $(function(){
             this.auto();
             this.href();
             this.slideLeftBar();
+            this.logout();
+            if(!sessionStorage.getItem("login")){
+                alert("您还未登录");
+                location.href = "login.html";
+            }else{
+                $("#uname").html(sessionStorage.getItem("login"));
+            }
+            if(localStorage.getItem("img")){
+               $("#people>img").attr("src",localStorage.getItem("img").substr(3));
+            }
         },
         auto:function(){
             $(".tc").on("click",function(){
@@ -56,6 +66,13 @@ $(function(){
                     $$(".tc").click();
                 }
             }.bind(this))
+        },
+        logout:function () {
+            $("#logout").on("click",function () {
+                localStorage.removeItem("img");
+                sessionStorage.removeItem("login");
+                location.reload();
+            })
         }
     };
     var move=new Move();

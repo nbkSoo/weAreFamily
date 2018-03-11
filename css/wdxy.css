@@ -32,6 +32,7 @@
     margin: 0.54rem 0.3rem;
     float: left;
     position: relative;
+    overflow: hidden;
 }
 .tp span img{
     width: 100%;
@@ -311,7 +312,7 @@ ul li {
 }
 .txtImg{
     box-sizing: border-box;
-    padding-left: .2rem;
+    padding-left: .12rem;
     width: 4rem;
 }
 .txtImg::after{

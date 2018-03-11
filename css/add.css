@@ -45,16 +45,17 @@ section{
     margin:0.2rem 0 0 0;float: left;
     position: relative;
 }
-.add img{
+.picBox .add img{
     width:0.6rem;
     position: absolute;
     top:50%;
     left:48%;
     transform:translate(-50%,-50%);
+    box-shadow: none;
 }
 .picBox{
-    width: 3.94rem;
-    margin:0 auto;
+    /*width: 3.94rem;*/
+    /*margin:0 auto;*/
 }
 .picBox::after{
     content: '';
@@ -64,8 +65,8 @@ section{
 }
 .picBox div{
     float: left;
-    width: 1.18rem;
-    max-height: 1.18rem;
+    width: 1.05603rem;
+    height: 1.05603rem;
     overflow: hidden;
     position: relative;
     margin:0.2rem 0.2rem 0 0;
@@ -73,7 +74,7 @@ section{
 .picBox div img{
     width: 100%;
 }
-.picBox div:nth-child(3n){
+.picBox div:nth-child(5n){
     margin-right: 0;
 }
 .tankuang{

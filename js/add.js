@@ -12,13 +12,6 @@ $(function () {
         },
         img:function () {
             var _this = this;
-            $(".Imge img").on("click",function(){
-                if($(".picBox").children().length>=9){
-                    _this.tipK("最多只能添加9张图片");
-                    return;
-                }
-                $(".picBox").append('<div><img src="'+$(this).attr("src")+'"></div>');
-            });
             $(".qd").on("click",function () {
                 $(this).parent().hide();
             });
@@ -33,11 +26,12 @@ $(function () {
         },
         //选择外部图片
         picSelect:function () {
+            var _this = this;
             var n = 0;
             $(".add").on({
                 "click":function () {
                     if(n>=9){
-                        $(".tankuang").show().children("p").html("最多只能添加9张图片");
+                        _this.tipK("最多只能添加9张图片");
                         return false;
                     }
                     n++;
@@ -51,7 +45,7 @@ $(function () {
                         }
                         var url = window.URL.createObjectURL(fl) || window.webkitURL.createObjectURL(fl);
                         var imgs = '<img src="'+url+'"/>'
-                        $(".picBox").append('<div>'+imgs+'</div>');
+                        $(".picBox").prepend('<div>'+imgs+'</div>');
                         imgs.onload = function () {
                             window.URL.revokeObjectURL(fl);
                         }
@@ -77,8 +71,23 @@ $(function () {
                         dataType:"json",
                         processData:false,
                         contentType:false,
+                        beforeSend:function () {
+                            $(".loader").show();
+                        },
+                        timeout:15000,
                         success:function (data) {
+                            $(".loader").hide();
+                            _this.tipK("发布成功");
+                            $(".qd").on("click",function () {
+                                location.href = "wdxy.html";
+                            });
+
                             console.log(data);
+                        },
+                        error:function (XMLHttpRequest, textStatus, errorThrown) {
+                            if(textStatus=="timeout"){
+                                $(".loader").hide();
+                            }
                         }
                     })
                 }
