@@ -32,7 +32,7 @@ section{
     resize: none;
 }
 /*.Imge{width: 6.1rem;padding: 0.2rem 0 0.2rem 0;*/
-    /*box-sizing: border-box;*/
+/*box-sizing: border-box;*/
 /*}*/
 .Imge img{float: left;width: 1.18rem;box-shadow: 0 0 0.1rem 0.05rem #ddd}
 .Imge::after{
@@ -126,4 +126,41 @@ section{
     to{
         top:1.14rem;
     }
+}
+.lodding{
+    width: 4rem;
+    height: 2rem;
+    border: 1px solid #999;
+    font-size: 0.3rem;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: rgb(255, 163, 160);
+    color: white;
+    border-radius: 5px;
+    display: none;
+    z-index: 999;
+
+}
+.lodding p{
+    height: 1.2rem;
+    text-align: center;
+    line-height: 1.2rem;
+    position: relative;
+
+}
+.ok{
+    width: 1.5rem;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    color: black;
+    background: #f9f9ff;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,20%);
+    text-align: center;
+
 }

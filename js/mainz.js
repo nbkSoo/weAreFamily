@@ -16,13 +16,16 @@ $(function(){
             this.slideLeftBar();
             this.logout();
             if(!sessionStorage.getItem("login")){
-                alert("您还未登录");
-                location.href = "login.html";
+                $(".lodding").css("display","block");
+                $(".ok").on("click",function(){
+                    location.href = "login.html";
+                })
+
             }else{
                 $("#uname").html(sessionStorage.getItem("login"));
             }
             if(localStorage.getItem("img")){
-               $("#people>img").attr("src",localStorage.getItem("img").substr(3));
+                $("#people>img").attr("src",localStorage.getItem("img").substr(3));
             }
         },
         auto:function(){
@@ -46,7 +49,7 @@ $(function(){
             $("#people img").on("click",function(){
                 window.location.href="grzl.html";
             });
-    },
+        },
         //滑动显示左侧菜单(zepto)
         slideLeftBar:function () {
             window.$$ = window.Zepto = Zepto;
