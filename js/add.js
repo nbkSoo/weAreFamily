@@ -40,7 +40,11 @@ $(function () {
                     $("#file"+n).on("change",function () {
                         var fl = $(this)[0].files[0];
                         if(fl.type.indexOf("image")==-1){
-                            alert("只能选择图片文件");
+                            $("lodding").css("display","block");
+                            $(".contents").html("只能选择图片文件");
+                            $(".ok").on("click",function(){
+                                $("lodding").css("display","none");
+                            })
                             return false;
                         }
                         var url = window.URL.createObjectURL(fl) || window.webkitURL.createObjectURL(fl);
@@ -102,7 +106,10 @@ $(function () {
                 window.history.back(-1);
             });
 
-    }
+        }
     };
-    var add=new Add();
+    // var add=new Add();
+    var a="12342526";
+    var b=a.replace(/234/g,"5");
+    console.log(b);
 })
