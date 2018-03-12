@@ -1,5 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin:*');
+header('P3P: CP="CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR"');
 ini_set("display_errors", "on");
 include_once "../../function.php";
 require_once dirname(__DIR__) . '/api_sdk/vendor/autoload.php';
@@ -76,12 +77,13 @@ class SmsDemo
 
         $rand = rand(100000,999999);
         // 必填，设置短信接收号码
-        setcookie("verifyTime",time(),time()+60*60*60,"/");
+
+        session_start();
+        $_SESSION["verifyTime"] = time();
+//        setcookie("verifyTime",time(),time()+60*60*60,"/");
         ajax_return("200","发送成功",$rand);
         die;
         $request->setPhoneNumbers($tel);
-
-
         // 必填，设置签名名称，应严格按"签名名称"填写，请参考: https://dysms.console.aliyun.com/dysms.htm#/develop/sign
         $request->setSignName("暗恋");
 

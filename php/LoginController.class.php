@@ -5,7 +5,6 @@ class LoginController{
      * 注册方法
      */
     public function register(){
-        if(IS_AJAX){
             $data=$_POST;
             $password=$data["password"];
             $tel = $data["tel"];
@@ -27,14 +26,12 @@ class LoginController{
                     ajax_return("400","注册失败","");
                 }
             }
-        }
     }
-
     /*
      * 登录方法
      */
     public function login(){
-        if(IS_AJAX){
+//        if(IS_AJAX){
             $data=$_POST;
             $username=$data["username"];
             $password=$data["password"];
@@ -54,17 +51,19 @@ class LoginController{
                 }
 
             }
-        }
+//        }
     }
     /*
      * 登录方法二
      */
     public function login2(){
+        session_start();
+        print_r($_SESSION).die;
             $data = $_POST;
             $tel = $data["tel"];
             $oldData = M()->query_sql("SELECT * FROM users WHERE tel='{$tel}'");
-//            print_r($oldData);die;
-            $timer = time()-$_COOKIE["verifyTime"];
+            session_start();
+            $timer = time() - $_SESSION["verifyTime"];
             if(empty($oldData)){
                 ajax_return("500","用户名不存在","");
             }else{
@@ -75,7 +74,6 @@ class LoginController{
                 }
 
             }
-
     }
     /*
      * 退出登录方法
@@ -88,7 +86,6 @@ class LoginController{
             ajax_return("200","退出成功","");
         }
     }
-
     /*
      * 加密方法
      */
@@ -97,3 +94,5 @@ class LoginController{
         return $md;
     }
 }
+$a=new LoginController;
+$a->login2();

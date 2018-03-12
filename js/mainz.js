@@ -16,8 +16,8 @@ $(function(){
             this.slideLeftBar();
             this.logout();
             if(!sessionStorage.getItem("login")){
-                alert("您还未登录");
-                location.href = "login.html";
+                // alert("您还未登录");
+                // location.href = "login.html";
             }else{
                 $("#uname").html(sessionStorage.getItem("login"));
             }
@@ -29,10 +29,10 @@ $(function(){
             $(".tc").on("click",function(){
                 if(this.tf){
                     $(".box_left").css("left","0px");
-                    $(".box_right").css("left","4.4rem");
+                    $(".box_right").css("left","4.6rem");
                     this.tf = false;
                 }else{
-                    $(".box_left").css("left","-4.4rem");
+                    $(".box_left").css("left","-4.6rem");
                     $(".box_right").css("left","0px");
                     this.tf = true;
                 }

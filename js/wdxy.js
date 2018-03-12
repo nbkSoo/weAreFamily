@@ -83,7 +83,7 @@ Move.prototype={
     getMessage:function () {
         $.ajax({
             type:"get",
-            url:"./php/index.php?c=Message&a=returnMessage",
+            url:"http://172.16.45.87/PhpstormProjects/weAreFamily11/php/index.php?c=Message&a=returnMessage",
             processData: false,
             dataType:"json",
             beforeSend:function () {
@@ -159,6 +159,12 @@ Move.prototype={
                 else if(data.code=="403"){
                     alert(data.message);
                     location.href = "add.html";
+                }
+            },
+            timeout:15000,
+            error:function (XMLHttpRequest, textStatus, errorThrown) {
+                if(textStatus=="timeout"){
+                    $(".loader").hide();
                 }
             }
         });

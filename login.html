@@ -73,15 +73,15 @@
                     dataType:"json",
                     success:function (data) {
                         console.log(data);
-                        if(data.code=="403"){
-                            d(1,data.message);
-                        }else if(data.code=="200"){
-                            console.log(data);
-                            sessionStorage.setItem("login",data.data);
-                            $(".tankuang").show().children("p").html("登录成功");
-                        }else if(data.code=="500"){
-                            d(0,"该手机号尚未注册");
-                        }
+                        // if(data.code=="403"){
+                        //     d(1,data.message);
+                        // }else if(data.code=="200"){
+                        //     console.log(data);
+                        //     sessionStorage.setItem("login",data.data);
+                        //     $(".tankuang").show().children("p").html("登录成功");
+                        // }else if(data.code=="500"){
+                        //     d(0,"该手机号尚未注册");
+                        // }
                     }
                 })
             });
@@ -147,7 +147,7 @@
                     }
                     $.ajax({
                         type:"post",
-                        url:"http://172.16.45.87/PhpstormProjects/weAreFamily11/php/aliyun/api_demo/SmsDemo.php",
+                        url:"./php/aliyun/api_demo/SmsDemo.php",
                         data:"tel="+$(".tel_inp").val(),
                         dataType:"json",
                         success:function (data) {
