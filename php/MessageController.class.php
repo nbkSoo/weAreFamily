@@ -6,7 +6,7 @@ class MessageController{
     public function sendMessage(){
             $data=$_POST;
             if(is_array($_FILES)){
-                $target = "../upload/";
+                $target = "http://172.16.45.87/PhpstormProjects/weAreFamily11/upload/";
                 $saveFilename = "";
                 for($i=0;$i<count($_FILES["photo"]["name"]);$i++){
                     $randNum = rand(100000,999999);
@@ -14,6 +14,8 @@ class MessageController{
                     $filename = $target.$randNum.time().substr($photoName,strpos($photoName,"."));
                     $saveFilename .= ";".$filename;
                     $tmpName = $_FILES["photo"]["tmp_name"][$i];
+                    p(dirname(__FILE__));
+                    p($filename).die;
                     move_uploaded_file($tmpName, $filename);
                 }
                 $saveFilename = substr($saveFilename,1);

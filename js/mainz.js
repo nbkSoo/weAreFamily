@@ -16,8 +16,8 @@ $(function(){
             this.slideLeftBar();
             this.logout();
             if(!sessionStorage.getItem("login")){
-                alert("您还未登录");
-                location.href = "login.html";
+                // alert("您还未登录");
+                // location.href = "login.html";
             }else{
                 $("#uname").html(sessionStorage.getItem("login"));
             }

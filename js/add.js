@@ -31,6 +31,7 @@ $(function () {
             $(".add").on({
                 "click":function () {
                     if(n>=9){
+                        console.log(9);
                         _this.tipK("最多只能添加9张图片");
                         return false;
                     }
@@ -80,13 +81,13 @@ $(function () {
                         },
                         timeout:15000,
                         success:function (data) {
+                            console.log(data);
                             $(".loader").hide();
                             _this.tipK("发布成功");
                             $(".qd").on("click",function () {
                                 location.href = "wdxy.html";
                             });
 
-                            console.log(data);
                         },
                         error:function (XMLHttpRequest, textStatus, errorThrown) {
                             if(textStatus=="timeout"){
@@ -108,8 +109,5 @@ $(function () {
 
         }
     };
-    // var add=new Add();
-    var a="12342526";
-    var b=a.replace(/234/g,"5");
-    console.log(b);
+    var add=new Add();
 })

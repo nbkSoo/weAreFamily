@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="afa0b251-2280-4811-a761-4c09465c0b61" name="localhost" url="http://localhost/PhpstormProjects/weAreFamily11">
+      <webServer id="afa0b251-2280-4811-a761-4c09465c0b61" name="localhost" url="http://172.16.45.87/PhpstormProjects/weAreFamily11">
         <fileTransfer port="0" accessType="LOCAL" />
       </webServer>
     </option>

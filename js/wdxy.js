@@ -101,20 +101,20 @@ Move.prototype={
                         var img = '';
                         if(imgs.length<=1){
                             $.each(imgs,function (index, item) {
-                                img += '<span style="min-width: 2rem; max-width: 100%"><img src="' + item.substr(3) + '"></span>';
+                                img += '<span style="min-width: 2rem; max-width: 100%"><img src="' + item + '"></span>';
                             })
                         }else if(imgs<=2){
                             $.each(imgs,function (index, item) {
-                                img+='<span style="width:44%">'+'<img src="'+item.substr(3)+'">'+'</span>';
+                                img+='<span style="width:44%">'+'<img src="'+item+'">'+'</span>';
                             });
                         }else if(imgs<=3){
                             $.each(imgs,function (index, item) {
-                                img+='<span style="width:28%">'+'<img src="'+item.substr(3)+'">'+'</span>';
+                                img+='<span style="width:28%">'+'<img src="'+item+'">'+'</span>';
                             });
 
                         }else{
                             $.each(imgs,function (index, item) {
-                                img+='<span style="width:1rem;margin:0.07rem;height:1rem;">'+'<img src="'+item.substr(3)+'">'+'</span>';
+                                img+='<span style="width:1rem;margin:0.07rem;height:1rem;">'+'<img src="'+item+'">'+'</span>';
                             });
                         }
                         if(tit>100){

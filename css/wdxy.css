@@ -1,3 +1,4 @@
+html,body{height:100%;}
 .box_content{
     width: 6.4rem;
     height: 10.36rem;
@@ -7,7 +8,7 @@
 /*弹出框*/
 .box_left{
     position: absolute;
-    top:30px;
+    top:60px;
     left: -4.4rem;
     width: 4.4rem;
     height: 100%;
@@ -226,7 +227,7 @@ ul li {
 }
 .white{color: white;}
 
-#box{width:6.4rem;height:100%;margin: 0 auto;background:#fee9e8;}
+#box{width:6.4rem;height:100%;margin: 0 auto;background:#fee9e8;overflow-x: hidden}
 
 
 #top{height:1rem;width:100%;background:#ff8288;
