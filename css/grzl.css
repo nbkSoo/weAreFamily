@@ -1,3 +1,8 @@
+.box{
+    width: 6.4rem;
+    height: 100%;
+    margin: 0 auto;
+}
 .header{
     width: 100%;
     height: 0.86rem;
@@ -29,6 +34,7 @@ p{
     position: relative;
     z-index: 999;
     overflow: hidden;
+    border: 1px solid #a8a8a8;
 }
 .tou{
     width: 1.88rem;
@@ -47,7 +53,8 @@ p{
     font-size: 0.24rem;
     height: 0.98rem;
     width: 5.75rem;
-    border:none;
+   padding: 0 0.3rem;
+    border: 0.01rem solid #a8a8a8;
     border-radius: 0.07rem;
     margin-left: 0.35rem;
 }
@@ -59,44 +66,55 @@ textarea{
     height: 1.6rem;
     margin-left: 0.35rem;
     border-radius: 0.07rem;
-    border: none;
+    padding: 0.35rem 0.3rem;
+    font-size: 0.25rem;
+    border: 0.01rem solid #a8a8a8;
 }
 .inp2{
     background: rgb(255,130,136);
     font-size: 0.36rem;
     margin-top: 0.3rem;
     color:#fff;
+    border: none;
     text-align: center;
-    line-height: 0.98rem;
+    line-height: 0.9rem;
 }
-.dding{
-    width: 4.5rem;
-    height: 2.5rem;
-    background: white;
+.lodding{
+    width: 4rem;
+    height: 2rem;
+    border: 1px solid #999;
+    font-size: 0.3rem;
     position: absolute;
-    top: 40%;
-    left: 15%;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: rgb(255, 163, 160);
+    color: white;
+    border-radius: 5px;
     display: none;
+    z-index: 999;
+
+}
+.lodding p{
+    height: 1.2rem;
+    font-size: 0.3rem;
     text-align: center;
-    line-height: 3rem;
-    border-radius: 5%;
-    border: 1px solid #444444;
+    color: white;
+    line-height: 1.2rem;
+    position: relative;
+
 }
-.txt{
-    width: 100%;
-    height: 1.8rem;
-    font-size: 0.35rem;
-    line-height: 1.8rem;
-    color: #444444;
-    position: absolute;
-    top: 0;
-    left: -0.5rem;
-}
-.ti{
+.ok{
     width: 1.5rem;
-    height: 0.5rem;
-    font-size: 16px;
-    margin-top: 1.8rem;
-    margin-left: 2.5rem;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    color: black;
+    background: #f9f9ff;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,20%);
+    text-align: center;
 }
 

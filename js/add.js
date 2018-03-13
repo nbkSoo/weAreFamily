@@ -12,7 +12,7 @@ $(function () {
         },
         img:function () {
             var _this = this;
-            $(".qd").on("click",function () {
+            $(".ok").on("click",function () {
                 $(this).parent().hide();
             });
             //长按划出删除按钮
@@ -41,10 +41,10 @@ $(function () {
                     $("#file"+n).on("change",function () {
                         var fl = $(this)[0].files[0];
                         if(fl.type.indexOf("image")==-1){
-                            $("lodding").css("display","block");
+                            $(".lodding").css("display","block");
                             $(".contents").html("只能选择图片文件");
                             $(".ok").on("click",function(){
-                                $("lodding").css("display","none");
+                                $(".lodding").css("display","none");
                             })
                             return false;
                         }
@@ -84,7 +84,7 @@ $(function () {
                             console.log(data);
                             $(".loader").hide();
                             _this.tipK("发布成功");
-                            $(".qd").on("click",function () {
+                            $(".ok").on("click",function () {
                                 location.href = "wdxy.html";
                             });
 
@@ -99,7 +99,7 @@ $(function () {
             })
         },
         tipK:function (str) {
-            $(".tankuang").show().children("p").html(str);
+            $(".lodding").show().children("p").html(str);
         },
         //后退按钮
         jump:function(){

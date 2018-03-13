@@ -77,35 +77,7 @@ section{
 .picBox div:nth-child(5n){
     margin-right: 0;
 }
-.tankuang{
-    width: 3rem;
-    height: 2rem;
-    background: rgba(241,241,241,0.8);
-    position: absolute;
-    color:#666;
-    top: 4.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: none;
-    font-size: 0.3rem;
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 0rem 0rem 0.1rem 0.05rem #ddd;
-    z-index: 999;
-}
-.contents{
-    margin-top: 0.2rem;
-    padding: 0 .3rem;
-    line-height: .45rem;
-}
-.qd{
-    position: absolute;
-    top: 1.35rem;
-    left: 50%;
-    transform: translateX(-50%);
-    padding:.03rem .25rem;
-    /*display: none;*/
-}
+
 .delete_pic{
     position: absolute;
     top:1.14rem;
@@ -162,5 +134,4 @@ section{
     left: 50%;
     transform: translate(-50%,20%);
     text-align: center;
-
 }

@@ -9,27 +9,34 @@
     <script src="js/app.js"></script>
 </head>
 <body>
-<main>
-    <div class="left" style="float: left;"><img src="images/left.png" alt="" style="width: 0.51rem;height: 0.33rem; position: absolute;top: 15px;left: -10px;" class="jump"></div>
-    <div class="header">个人资料</div>
-</main>
+<div class="box">
+    <main>
+        <div class="left" style="float: left;"><img src="images/left.png" alt="" style="width: 0.51rem;height: 0.33rem; position: absolute;top: 15px;left: -10px;" class="jump"></div>
+        <div class="header">个人资料</div>
+    </main>
     <form method="post" id="form">
-    <div class="content">
-        <div class="touxiang" id="box">
-            <img src="images/xj.png" alt="">
-            <p>添加头像</p>
+        <div class="content">
+            <div class="touxiang" id="box">
+                <img src="images/xj.png" alt="">
+                <p>添加头像</p>
+            </div>
+            <input type="file" name="photo" style="display: none" id="file">
         </div>
-        <input type="file" name="photo" style="display: none" id="file">
-    </div>
         <input type="text" name="username" placeholder="请输入你的名字" class="inp" id="uname">
         <input type="text"  name="tel" placeholder="请输入你的手机号" class="inp inp1" id="tel">
         <textarea name="title" id="tie" placeholder="想对他她暗恋对象的爱的表白"></textarea>
         <input type="button" value="保存" class="inp inp2" id="btn">
     </form>
-<div class="dding">
-    <p class="txt">修改成功</p>
-    <input type="button" class="ti" value="确定">
+    <div class="lodding">
+        <p class="contents"> </p>
+        <div class="ok">确定</div>
+    </div>
+    <!--<div class="dding">-->
+        <!--<p class="txt">修改成功</p>-->
+        <!--<input type="button" class="ti" value="确定">-->
+    <!--</div>-->
 </div>
+
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/grzl.js"></script>
 </body>

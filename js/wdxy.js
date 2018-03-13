@@ -66,7 +66,12 @@ Move.prototype={
     delete:function(){
         $(document).on("click",".delete",function(){
             $(this).parent("li").fadeOut(function () {
-                $(this).remove();
+                $(".lodding").css("display","block");
+                $(".contents").html("删除成功");
+                $(".ok").on("click",function(){
+                    $(".lodding").css("display","none");
+                    $(this).remove();
+                });
             });
             $.ajax({
                 type:"post",
