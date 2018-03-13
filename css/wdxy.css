@@ -2,7 +2,6 @@ html,body{height:100%;}
 .box_content{
     width: 6.4rem;
     height: 10.36rem;
-    /*overflow: hidden;*/
     position: relative;
 }
 /*弹出框*/
