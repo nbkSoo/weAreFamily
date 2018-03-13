@@ -65,12 +65,13 @@ Move.prototype={
     //删除功能
     delete:function(){
         $(document).on("click",".delete",function(){
+            var _this=this;
             $(this).parent("li").fadeOut(function () {
                 $(".lodding").css("display","block");
                 $(".contents").html("删除成功");
                 $(".ok").on("click",function(){
                     $(".lodding").css("display","none");
-                    $(this).remove();
+                    $(_this).remove();
                 });
             });
             $.ajax({
