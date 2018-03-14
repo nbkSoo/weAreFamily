@@ -1,3 +1,9 @@
+.box{
+    width: 6.4rem;
+    height: 11.35rem;
+    margin: 0 auto;
+    background-color:rgb(253,239,231);
+}
 .header{
     width: 100%;
     height: 0.86rem;
