@@ -1,3 +1,5 @@
+$(function () {
+
 
 function  Move(){
     this.init();
@@ -8,6 +10,7 @@ Move.prototype={
         this.form();
         this.delete();
         this.getMessage();
+        this.scrollGet();
     },
     //限制行数和设置收起与全文
     auto:function(){
@@ -89,15 +92,15 @@ Move.prototype={
     getMessage:function () {
         $.ajax({
             type:"get",
-            url:"http://172.16.45.87/PhpstormProjects/weAreFamily11/php/index.php?c=Message&a=returnMessage",
+            url:"http://172.16.45.87/PhpstormProjects/weAreFamily316/php/index.php?c=Message&a=returnMessage",
             processData: false,
             dataType:"json",
             beforeSend:function () {
                 $(".loader").show();
+                $(".lodding").hide();
             },
             success:function (data) {
                 $(".loader").hide();
-                console.log(data);
                 if(data.code=="200"){
                     var d = data.data.data;
                     for(var i=0; i<d.length; i++){
@@ -107,20 +110,20 @@ Move.prototype={
                         var img = '';
                         if(imgs.length<=1){
                             $.each(imgs,function (index, item) {
-                                img += '<span style="min-width: 2rem; max-width: 100%"><img src="' + item + '"></span>';
+                                img += '<span style="min-width: 2rem; max-width: 100%"><img src="' + item.substr(3) + '"></span>';
                             })
                         }else if(imgs<=2){
                             $.each(imgs,function (index, item) {
-                                img+='<span style="width:44%">'+'<img src="'+item+'">'+'</span>';
+                                img+='<span style="width:44%">'+'<img src="'+item.substr(3)+'">'+'</span>';
                             });
                         }else if(imgs<=3){
                             $.each(imgs,function (index, item) {
-                                img+='<span style="width:28%">'+'<img src="'+item+'">'+'</span>';
+                                img+='<span style="width:28%">'+'<img src="'+item.substr(3)+'">'+'</span>';
                             });
 
                         }else{
                             $.each(imgs,function (index, item) {
-                                img+='<span style="width:1rem;margin:0.07rem;height:1rem;">'+'<img src="'+item+'">'+'</span>';
+                                img+='<span style="width:1rem;margin:0.07rem;height:1rem;">'+'<img src="'+item.substr(3)+'">'+'</span>';
                             });
                         }
                         if(tit>100){
@@ -163,19 +166,28 @@ Move.prototype={
                     });
                 }
                 else if(data.code=="403"){
-                    alert(data.message);
-                    location.href = "add.html";
+                    $(".lodding").show().children("p").html(data.message);
+                    $(".ok").on("click",function () {
+                        location.href = "add.html";
+                    })
                 }
             },
             timeout:15000,
             error:function (XMLHttpRequest, textStatus, errorThrown) {
                 if(textStatus=="timeout"){
                     $(".loader").hide();
+                    $(".lodding").show().children("p").html("加载超时");
                 }
             }
         });
-    }
+    },
+    //底部刷新
+    scrollGet:function () {
+        $(window).on("scroll",function () {
+            console.log(123);
+        })
+    },
 };
 var move=new Move();
-
+})
 

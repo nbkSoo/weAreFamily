@@ -14,11 +14,48 @@ $(function () {
             this.sendPic();
             this.submit();
             this.jump();
-            if(localStorage.getItem("img")){
-                $("#box>img").attr("src",localStorage.getItem("img").substr(3)).addClass("tou");
-            }
             if(sessionStorage.getItem("login")){
-                $("#uname").val(sessionStorage.getItem("login"));
+                var login = JSON.parse(sessionStorage.getItem("login"));
+                if(login.headPic==null){
+                    $("#box>img").attr("src","images/xj.png");
+                }else{
+                    console.log(123);
+                    $("#box").html("<img class='logPics' src='"+login.headPic.substr(3)+"'>");
+                }
+                $("#uname").val(login.username);
+                $("#tie").val(login.title);
+                $("#hidden_mid").val(login.id);
+            }
+            if(sessionStorage.getItem("loginId")){
+                $.ajax({
+                    type:"post",
+                    url:"http://172.16.45.87/PhpstormProjects/weAreFamily316/php/index.php?c=Message&a=getOldData",
+                    data:"mid="+sessionStorage.getItem("loginId"),
+                    dataType:"json",
+                    beforeSend:function () {
+                        $(".loader").show();
+                    },
+                    timeout:15000,
+                    success:function (data) {
+                        $(".loader").hide();
+                        var d = data;
+                        console.log(data.data);
+                        if(d.data.headPic!=null){
+                            $("#box").html("<img class='logPics' src='"+d.data.headPic.substr(3)+"'>");
+                        }else{
+                            $("#box>img").attr("src","images/xj.png");
+                        }
+                        $("#uname").val(d.data.username);
+                        $("#tie").val(d.data.title);
+                        $("#hidden_mid").val(d.data.id);
+                    },
+                    error:function (XMLHttpRequest, textStatus, errorThrown) {
+                        if(textStatus=="timeout"){
+                            $(".loader").hide();
+                            $(".lodding").show().children("p").html("加载超时");
+                        }
+                    }
+                });
             }
         },
         sendPic: function () {
@@ -69,44 +106,46 @@ $(function () {
                 }
                 $.ajax({
                     type:"post",
-                    url:"./php/server.php",
+                    url:"http://172.16.45.87/PhpstormProjects/weAreFamily316/php/index.php?c=Message&a=updateMessage",
                     data:_this.formData,
                     dataType:"json",
                     processData:false,
                     contentType:false,
+                    beforeSend:()=>{
+                        $(".loader").show();
+                    },
                     success:function(da){
-                        var img = $("<img src='"+da.photo.replace('../',"")+"' id='img' class='top'/>");
-                        $("#box").html(img);
-                        localStorage.setItem("img",da.photo);
-                        $(".lodding").css("display","block");
-                        $(".lodding p").html("修改成功");
+                        $(".loader").hide();
+                        if(da.code==200){
+                            $(".lodding").show().children("p").html("修改成功");
+                        }
+                        $(".ok").on("click",function () {
+                            $(".lodding").hide();
+                        });
                     }
                 });
-                $(".ok").on("click",function(){
-                    $(".lodding").css("display","none");
-                    $.ajax({
-                        type:"post",
-                        url:"http://172.16.45.87/PhpstormProjects/weAreFamily11/php/index.php?c=Message&a=sendMessage",
-                        data:_this.formData,
-                        processData:false,
-                        contentType:false,
-                        dataType:"json",
-                        success:function(data){
-                            if(data.code=="200"){
-
-                            }
-                        }
-                    });
-                });
             });
-
         },
         //后退按钮
         jump:function(){
+            window.$$ = window.Zepto = Zepto;
             $(".jump").on("click",function(){
                 window.history.back(-1);
             })
-    }
+            $$(document).on("touchstart",function (e) {
+                var touch = e.touches[0];
+                this.startPosition = touch.pageX;
+            }.bind(this)).on("touchmove",function (e) {
+                var touch = e.touches[0];
+                this.endPosition = touch.pageX;
+                this.deltaX = this.endPosition - this.startPosition;
+            }.bind(this)).on("touchend",function (e) {
+                if(this.deltaX > 80) { // 向右划动
+                    this.tf = true;
+                    window.history.back(-1);
+                }
+            }.bind(this))
+        }
     };
     var grzl = new Grzl();
 });

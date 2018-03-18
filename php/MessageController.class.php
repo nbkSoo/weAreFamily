@@ -1,43 +1,41 @@
 <?php
+//echo '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">';
 class MessageController{
     /*
      * 添加留言
      */
+
     public function sendMessage(){
-            $data=$_POST;
-            if(is_array($_FILES)){
-                $target = "http://172.16.45.87/PhpstormProjects/weAreFamily11/upload/";
-                $saveFilename = "";
-                for($i=0;$i<count($_FILES["photo"]["name"]);$i++){
-                    $randNum = rand(100000,999999);
-                    $photoName = $_FILES["photo"]["name"][$i];
-                    $filename = $target.$randNum.time().substr($photoName,strpos($photoName,"."));
-                    $saveFilename .= ";".$filename;
-                    $tmpName = $_FILES["photo"]["tmp_name"][$i];
-                    p(dirname(__FILE__));
-                    p($filename).die;
-                    move_uploaded_file($tmpName, $filename);
-                }
-                $saveFilename = substr($saveFilename,1);
-                $data['photoUrl'] = $saveFilename;
-                $data["date"] = time();
-                $result = M()->add("message",$data);
-            }else{
-                $files=$_FILES['photo']['name'];
-                $target = "../upload/";
-                $filename = $target.time().substr($files,strpos($files,"."));
-                $data["photoUrl"]=$filename;
-                move_uploaded_file($_FILES['photo']['tmp_name'], $filename);
-                $data["date"]=time();
-                $result=M()->add("grzl",$data);
+        $data=$_POST;
+        if(is_array($_FILES["photo"]["name"])){
+            $target = "../upload/";
+            $saveFilename = "";
+            for($i=0;$i<count($_FILES["photo"]["name"]);$i++){
+                $randNum = rand(100000,999999);
+                $photoName = $_FILES["photo"]["name"][$i];
+                $filename = $target.$randNum.time().substr($photoName,strpos($photoName,"."));
+                $saveFilename .= ";".$filename;
+                $tmpName = $_FILES["photo"]["tmp_name"][$i];
+                move_uploaded_file($tmpName, $filename);
             }
-
-
-            if(!$result){
-                ajax_return("403","发布失败","");
-            }else{
-                ajax_return("200","发布成功","");
-            }
+            $saveFilename = substr($saveFilename,1);
+            $data['photoUrl'] = $saveFilename;
+            $data["date"] = time();
+            $result = M()->add("message",$data);
+        }else{
+            $files=$_FILES['photo']['name'];
+            $target = "../upload/";
+            $filename = $target.time().substr($files,strpos($files,"."));
+            $data["photoUrl"]=$filename;
+            move_uploaded_file($_FILES['photo']['tmp_name'], $filename);
+            $data["date"]=time();
+            $result=M()->add("grzl",$data);
+        }
+        if(!$result){
+            ajax_return("403","发布失败","");
+        }else{
+            ajax_return("200","发布成功","");
+        }
     }
     /*
      * 返回留言
@@ -71,7 +69,6 @@ class MessageController{
             }else{
                 ajax_return("403","还没有留言，去留言吧","");
             }
-//        }
     }
     /*
      * 删除留言
@@ -93,38 +90,32 @@ class MessageController{
      * 编辑留言
      */
     public function getOldData(){
-        if(IS_AJAX){
-            $data=$_POST["mid"];
-            $result=M()->query_sql("SELECT * FROM message WHERE id={$data}");
-//            p($result);
-//            die;
-            $result=current($result);
-            if(!empty($result)){
-                ajax_return("200","成功",$result);
-            }else{
-                ajax_return("403","失败","");
-            }
+        $data=$_POST["mid"];
+        $result=M()->query_sql("SELECT * FROM users WHERE id={$data}");
+        $result=current($result);
+        if(!empty($result)){
+            ajax_return("200","成功",$result);
+        }else{
+            ajax_return("403","失败","");
         }
     }
     /*
      * 更新留言
      */
     public function updateMessage(){
-        if(IS_AJAX){
-            $data=$_POST;
-            $files=$_FILES['photo']['name'];
-            $target = "../upload/";
-            $filename = $target.time().substr($files,strpos($files,"."));
-            $data["photoUrl"]=$filename;
-            move_uploaded_file($_FILES['photo']['tmp_name'], $filename);
-            $id=$data["mid"];
-            unset($data["mid"]);
-            $result=M()->update("message",$data,$id);
-            if(!$result){
-                ajax_return("403","没有任何修改","");
-            }else{
-                ajax_return("200","修改成功","");
-            }
+        $data=$_POST;
+        $files=$_FILES['photo']['name'];
+        $target = "../upload/";
+        $filename = $target.time().substr($files,strpos($files,"."));
+        $data["headPic"]=$filename;
+        move_uploaded_file($_FILES['photo']['tmp_name'], $filename);
+        $id=$data["mid"];
+        unset($data["mid"]);
+        $result=M()->update("users",$data,$id);
+        if(!$result){
+            ajax_return("403","没有任何修改","");
+        }else{
+            ajax_return("200","修改成功","");
         }
     }
     /*
@@ -167,4 +158,9 @@ class MessageController{
             }
         }
     }
+
+    public function asMessage(){
+
+    }
+
 }

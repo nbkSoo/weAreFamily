@@ -71,7 +71,7 @@ $(function () {
                     }
                     $.ajax({
                         type:"post",
-                        url:"http://172.16.45.87/PhpstormProjects/weAreFamily11/php/index.php?c=Message&a=sendMessage",
+                        url:"http://172.16.45.87/PhpstormProjects/weAreFamily316/php/index.php?c=Message&a=sendMessage",
                         data:formData,
                         dataType:"json",
                         processData:false,
@@ -87,9 +87,9 @@ $(function () {
                             $(".ok").on("click",function () {
                                 location.href = "wdxy.html";
                             });
-
                         },
                         error:function (XMLHttpRequest, textStatus, errorThrown) {
+                            console.log(textStatus);
                             if(textStatus=="timeout"){
                                 $(".loader").hide();
                             }

@@ -2,6 +2,7 @@
     width:6.4rem;
     height: 11.35rem;
     margin: 0 auto;
+    overflow:hidden;
     background-color:rgb(253,239,231);
 }
 .header{

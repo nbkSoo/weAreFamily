@@ -71,20 +71,25 @@
                 }
                 $.ajax({
                     type:"post",
-                    url:"http://172.16.45.87/PhpstormProjects/weAreFamily11/php/index.php?c=Login&a=login2",
+                    url:"http://172.16.45.87/PhpstormProjects/weAreFamily316/php/index.php?c=Login&a=login2",
                     data:"tel="+$(".tel_inp").val(),
                     dataType:"json",
                     success:function (data) {
-                        console.log(data);
-                        // if(data.code=="403"){
-                        //     d(1,data.message);
-                        // }else if(data.code=="200"){
-                        //     console.log(data);
-                        //     sessionStorage.setItem("login",data.data);
-                        //     $(".tankuang").show().children("p").html("登录成功");
-                        // }else if(data.code=="500"){
-                        //     d(0,"该手机号尚未注册");
-                        // }
+                        var newTime = new Date().getTime()/1000;
+                        var oldTime = sessionStorage.getItem("oldTime");
+                        if(newTime-oldTime>=15){
+                            d(1,"验证码已经过期");
+                            return;
+                        }
+                        if(data.code=="403"){
+                            d(1,data.message);
+                        }else if(data.code=="200"){
+                            console.log(data);
+                            sessionStorage.setItem("loginId",data.data.id);
+                            $(".tankuang").show().children("p").html("登录成功");
+                        }else if(data.code=="500"){
+                            d(0,"该手机号尚未注册");
+                        }
                     }
                 })
             });
@@ -150,16 +155,17 @@
                     }
                     $.ajax({
                         type:"post",
-                        url:"./php/aliyun/api_demo/SmsDemo.php",
+                        url:"http://172.16.45.87/PhpstormProjects/weAreFamily316/php/aliyun/api_demo/SmsDemo.php",
                         data:"tel="+$(".tel_inp").val(),
                         dataType:"json",
                         success:function (data) {
-                            console.log(data);
                             if(data.code=="200"){
+                                console.log(data);
+                                sessionStorage.setItem("oldTime",new Date().getTime()/1000);
                                 sessionStorage.setItem("rand",data.data);
                             }
                         }
-                    })
+                    });
                 }
             });
         },

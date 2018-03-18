@@ -15,14 +15,28 @@ $(function(){
             this.href();
             this.slideLeftBar();
             this.logout();
-            if(!sessionStorage.getItem("login")){
-                // alert("您还未登录");
-                // location.href = "login.html";
+            if(!sessionStorage.getItem("loginId")){
+                $(".lodding").show();
+                $(".loader").show();
+                $(".ok").on("click",function () {
+                    location.href = "login.html";
+                })
             }else{
-                $("#uname").html(sessionStorage.getItem("login"));
-            }
-            if(localStorage.getItem("img")){
-               $("#people>img").attr("src",localStorage.getItem("img").substr(3));
+                $.ajax({
+                    type:"post",
+                    url:"http://172.16.45.87/PhpstormProjects/weAreFamily316/php/index.php?c=Message&a=getOldData",
+                    data:"mid="+sessionStorage.getItem("loginId"),
+                    dataType:"json",
+                    success:function (data) {
+                        var d = data;
+                        if(d.data.headPic!=null){
+                            $("#people>img").attr("src",d.data.headPic.substr(3));
+                        }else{
+                            $("#people>img").attr("src","images/l_10.png");
+                        }
+                        $("#uname").html(d.data.username);
+                    }
+                });
             }
         },
         auto:function(){
@@ -69,10 +83,12 @@ $(function(){
         },
         logout:function () {
             $("#logout").on("click",function () {
-                localStorage.removeItem("img");
-                sessionStorage.removeItem("login");
-                location.reload();
-            })
+                sessionStorage.removeItem("loginId");
+                $(".loader").show();
+                setTimeout(()=>{
+                    location.href="login.html";
+                },1000)
+            });
         }
     };
     var move=new Move();
