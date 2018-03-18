@@ -8,11 +8,6 @@ class LoginController{
             $data=$_POST;
             $password=$data["password"];
             $tel = $data["tel"];
-            $timer = time()-$_COOKIE["verifyTime"];
-            if($timer>300){
-                ajax_return("403","验证码已经过期！","");
-                die;
-            }
             $oldData=M()->query_sql("SELECT * FROM users WHERE tel='{$tel}'");
             if(!empty($oldData)){
                 ajax_return("505","该手机号已经注册！","");

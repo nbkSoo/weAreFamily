@@ -36,7 +36,7 @@ Zhuce.prototype={
                 }
                 $.ajax({
                     type:"post",
-                    url:"./php/aliyun/api_demo/SmsDemo.php",
+                    url:"http://172.16.45.87/PhpstormProjects/weAreFamily316/php/aliyun/api_demo/SmsDemo.php",
                     data:"tel="+$(".register_tel").val(),
                     dataType:"json",
                     success:function (data) {
@@ -71,7 +71,7 @@ Zhuce.prototype={
             }else{
                 $.ajax({
                     type:"post",
-                    url:"./php/index.php?c=Login&a=register",
+                    url:"http://172.16.45.87/PhpstormProjects/weAreFamily316/php/index.php?c=Login&a=register",
                     data:$(".register_form").serialize(),
                     dataType:"json",
                     success:function (data) {
@@ -100,6 +100,7 @@ Zhuce.prototype={
         }
     },
     qd:function () {
+
         $(".qd").on("click",function () {
             $(".tankuang").css("display","none");
         })

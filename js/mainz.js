@@ -15,6 +15,7 @@ $(function(){
             this.href();
             this.slideLeftBar();
             this.logout();
+            this.changePic();
             if(!sessionStorage.getItem("loginId")){
                 $(".lodding").show();
                 $(".loader").show();
@@ -80,6 +81,24 @@ $(function(){
                     $$(".tc").click();
                 }
             }.bind(this))
+        },
+        //主页头像切换
+        changePic:function () {
+            // $.getJSON("mes.json",function (data) {
+            //     console.log(data);
+            //     $.each(data,function (index, item) {
+            //         $.ajax({
+            //             type:"post",
+            //             dataType:"json",
+            //             async:false,
+            //             url:"http://172.16.45.87/PhpstormProjects/weAreFamily316/php/index.php?c=Message&a=sendMessage",
+            //             data:"boyPic="+item.boy+"&girlPic="+item.girl+"&title="+item.title,
+            //             success:function (data) {
+            //                 console.log(data);
+            //             }
+            //         })
+            //     })
+            // })
         },
         logout:function () {
             $("#logout").on("click",function () {

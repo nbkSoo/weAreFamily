@@ -103,6 +103,7 @@ class MessageController{
      * 更新留言
      */
     public function updateMessage(){
+
         $data=$_POST;
         $files=$_FILES['photo']['name'];
         $target = "../upload/";
@@ -157,10 +158,6 @@ class MessageController{
                 ajax_return("202","取消点赞成功","");
             }
         }
-    }
-
-    public function asMessage(){
-
     }
 
 }

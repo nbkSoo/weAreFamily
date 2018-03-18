@@ -106,7 +106,7 @@ $(function () {
                 }
                 $.ajax({
                     type:"post",
-                    url:"http://172.16.45.87/PhpstormProjects/weAreFamily316/php/index.php?c=Message&a=updateMessage",
+                    url:"php/index.php?c=Message&a=updateMessage",
                     data:_this.formData,
                     dataType:"json",
                     processData:false,
