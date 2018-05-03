@@ -66,7 +66,11 @@ $(function () {
                 "click":function () {
                     var formData = new FormData(content);
                     if($(".teart").val()==""){
-                        _this.tipK("内容不能为空！");
+                        // _this.tipK("内容不能为空！");
+                        $(".titles").slideDown();
+                        setTimeout(function(){
+                            $(".titles").slideUp();
+                        },2000);
                         return;
                     }
                     $.ajax({
@@ -77,6 +81,7 @@ $(function () {
                         processData:false,
                         contentType:false,
                         beforeSend:function () {
+                            console.log($(".loader"));
                             $(".loader").show();
                         },
                         timeout:15000,

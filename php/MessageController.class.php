@@ -15,6 +15,7 @@ class MessageController{
                 $photoName = $_FILES["photo"]["name"][$i];
                 $filename = $target.$randNum.time().substr($photoName,strpos($photoName,"."));
                 $saveFilename .= ";".$filename;
+                p($filename);
                 $tmpName = $_FILES["photo"]["tmp_name"][$i];
                 move_uploaded_file($tmpName, $filename);
             }
@@ -103,7 +104,6 @@ class MessageController{
      * 更新留言
      */
     public function updateMessage(){
-
         $data=$_POST;
         $files=$_FILES['photo']['name'];
         $target = "../upload/";
@@ -159,5 +159,10 @@ class MessageController{
             }
         }
     }
-
+    public function get(){
+        $result = M()->query_sql("SELECT * FROM addMes ORDER BY rand() limit 2");
+        if($result){
+            ajax_return("200","成功",$result);
+        }
+    }
 }

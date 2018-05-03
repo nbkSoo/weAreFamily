@@ -200,10 +200,11 @@
 .go{
     position: absolute;
     top: 9rem;
-    left: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .go a{
-    padding: 10px 40px;
+    padding: 10px 10px;
     text-decoration: none;
     color: #f9f9ff;
     border-radius: 5%;

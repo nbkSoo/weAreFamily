@@ -11,6 +11,8 @@ Move.prototype={
         this.delete();
         this.getMessage();
         this.scrollGet();
+        this.clickPic();
+        this.Left();
     },
     //限制行数和设置收起与全文
     auto:function(){
@@ -70,12 +72,10 @@ Move.prototype={
         $(document).on("click",".delete",function(){
             var _this=this;
             $(this).parent("li").fadeOut(function () {
-                $(".lodding").css("display","block");
-                $(".contents").html("删除成功");
-                $(".ok").on("click",function(){
-                    $(".lodding").css("display","none");
-                    $(_this).remove();
-                });
+                $(".remove").slideDown();
+                setTimeout(function(){
+                    $(".remove").slideUp();
+                },2000);
             });
             $.ajax({
                 type:"post",
@@ -103,6 +103,18 @@ Move.prototype={
                 $(".loader").hide();
                 if(data.code=="200"){
                     var d = data.data.data;
+                    var d1 = null;
+                    $.ajax({
+                        type:"post",
+                        url:"http://172.16.45.87/PhpstormProjects/weAreFamily316/php/index.php?c=Message&a=getOldData",
+                        data:"mid="+sessionStorage.getItem("loginId"),
+                        async:false,
+                        dataType:"json",
+                        success:function (data) {
+                            var d = data;
+                            d1 = d;
+                        }
+                    });
                     for(var i=0; i<d.length; i++){
                         var html = '';
                         var tit=d[i].title.length;
@@ -137,11 +149,11 @@ Move.prototype={
                         // 图片的数量决定图片的大小
                         html+= '<li>'+
                             '<span class="touxiang">'+
-                            '<img src="images/tx.png" alt="" class="tx">'+
+                            '<img src="'+d1.data.headPic.substr(3)+'" alt="" class="tx">'+
                             '</span>'+
                             '<div class="title">'+
-                            '<span class="uname">娟子</span>'+
-                            '<span class="time">8小时前</span>'+
+                            '<span class="uname">'+d1.data.username+'</span>'+
+                            '<span class="time">'+d[i].date+'</span>'+
                             neirong+
                             slide+
                             '<p class="txtImg">'+
@@ -187,7 +199,21 @@ Move.prototype={
             console.log(123);
         })
     },
+    //左边一直居中
+    Left:function(){
+        window.onscroll=function(){
+            var stop=document.documentElement.scrollTop||document.body.scrollTop;
+            console.log(stop);
+        }
+    },
+    //点击图片
+    clickPic:function () {
+        $(".txtImg img").on("click",function () {
+            console.log($(this));
+        })
+    }
 };
+
 var move=new Move();
 })
 

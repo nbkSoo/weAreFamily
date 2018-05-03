@@ -39,7 +39,6 @@ $(function () {
                     success:function (data) {
                         $(".loader").hide();
                         var d = data;
-                        console.log(data.data);
                         if(d.data.headPic!=null){
                             $("#box").html("<img class='logPics' src='"+d.data.headPic.substr(3)+"'>");
                         }else{

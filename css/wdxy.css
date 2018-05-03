@@ -6,7 +6,7 @@ html,body{height:100%;}
 }
 /*弹出框*/
 .box_left{
-    position: absolute;
+    position: fixed;
     top:60px;
     left: -4.4rem;
     width: 4.4rem;
@@ -173,7 +173,7 @@ ul li {
 }
 .txtImg{
     box-sizing: border-box;
-    padding-left: .2rem;
+    padding-left: .12rem;
     width: 4rem;
 }
 .txtImg::after{
@@ -255,8 +255,8 @@ ul li {
     height: 2rem;
     border: 1px solid #999;
     font-size: 0.3rem;
-    position: absolute;
-    top: 30%;
+    position: fixed;
+    top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     background: rgb(255, 163, 160);
@@ -287,4 +287,17 @@ ul li {
     left: 50%;
     transform: translate(-50%,20%);
     text-align: center;
+}
+.remove{
+    position: fixed;
+    width:100%;
+    left:50%;
+    transform:translateX(-50%);
+    color:salmon;
+    background: #fee9e8;
+    font-size: .35rem;
+    text-align: center;
+    line-height:1rem;
+    z-index:999;
+    display:none;
 }

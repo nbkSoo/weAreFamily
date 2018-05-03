@@ -30,6 +30,7 @@ $(function(){
                     dataType:"json",
                     success:function (data) {
                         var d = data;
+                        console.log(d);
                         if(d.data.headPic!=null){
                             $("#people>img").attr("src",d.data.headPic.substr(3));
                         }else{
@@ -84,21 +85,19 @@ $(function(){
         },
         //主页头像切换
         changePic:function () {
-            // $.getJSON("mes.json",function (data) {
-            //     console.log(data);
-            //     $.each(data,function (index, item) {
-            //         $.ajax({
-            //             type:"post",
-            //             dataType:"json",
-            //             async:false,
-            //             url:"http://172.16.45.87/PhpstormProjects/weAreFamily316/php/index.php?c=Message&a=sendMessage",
-            //             data:"boyPic="+item.boy+"&girlPic="+item.girl+"&title="+item.title,
-            //             success:function (data) {
-            //                 console.log(data);
-            //             }
-            //         })
-            //     })
-            // })
+            var lock = true;
+            $.ajax({
+                type:"get",
+                url:"./php/index.php?c=Message&a=get",
+                dataType:"json",
+                async:false,
+                success:function (data) {
+                    var d = data;
+                    $(".girlImg").css("background","url("+d.data[0].girl+")");
+                    $(".boyImg").css("background","url("+d.data[0].boy+")");
+                    $(".message").html(d.data[0].title);
+                }
+            })
         },
         logout:function () {
             $("#logout").on("click",function () {

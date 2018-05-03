@@ -5,6 +5,7 @@
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1,user-scalable=no"/>
     <link rel="stylesheet" href="css/chongzhi.css">
+    <link rel="stylesheet" href="css/css-loader.css">
     <link rel="stylesheet" href="css/login.css">
     <script src="js/app.js"></script>
 </head>
@@ -38,6 +39,7 @@
             <input type="button" value="确定" class="qd">
         </div>
     </section>
+    <div class="loader loader-default is-active" data-text></div>
 </div>
 
 <script src="js/jquery-1.8.3.min.js"></script>
@@ -74,19 +76,25 @@
                     url:"http://172.16.45.87/PhpstormProjects/weAreFamily316/php/index.php?c=Login&a=login2",
                     data:"tel="+$(".tel_inp").val(),
                     dataType:"json",
+                    beforeSend:function () {
+                        $(".loader").show();
+                    },
+                    timeout:15000,
                     success:function (data) {
                         var newTime = new Date().getTime()/1000;
                         var oldTime = sessionStorage.getItem("oldTime");
                         if(newTime-oldTime>=15){
+                            $(".loader").hide();
                             d(1,"验证码已经过期");
                             return;
                         }
                         if(data.code=="403"){
                             d(1,data.message);
                         }else if(data.code=="200"){
+                            $(".loader").hide();
                             console.log(data);
                             sessionStorage.setItem("loginId",data.data.id);
-                            $(".tankuang").show().children("p").html("登录成功");
+                            location.href = "mainz.html";
                         }else if(data.code=="500"){
                             d(0,"该手机号尚未注册");
                         }
@@ -172,7 +180,7 @@
         qd:function () {
             $(".qd").on("click",function () {
                 $(".tankuang").css("display","none");
-                location.href = "mainz.html";
+                // location.href = "mainz.html";
             })
         }
     };
